@@ -98,12 +98,65 @@ seven genuine pinned repositories, source/corpus, head/tree/status, resolved GCC
 driver and ld.bfd before and after. Exact commands and raw stdout/stderr are
 retained. The chosen linker is explicit GCC with `-fuse-ld=bfd`.
 
-Status at initial source preservation: **new compiler not yet run**. Planned
-checks are debug/optimized real Rust unit tests, separately linked input-only
-clients on the whole frozen denominator, one additional optimized build for
-raw own-build equality, nine compiling semantic mutants, and six comparator
-corruption controls. The real context unit checks object identity and mutation
-through the chosen safe borrow. Planned checks are not results.
+The initial source was preserved in `[skip ci]` commit `3f03355e` before the
+first new compiler run. Its first ordinary fork push stopped on an unrelated
+historical LFS traversal. Root verified zero new LFS pointer blobs and preserved
+this exact source ref using `GIT_LFS_SKIP_PUSH=1`; no security/review hook was
+bypassed. The public source/corpus commit exists on the contributor's fork.
+
+The actual run on that source passed **68 commands / 136 exact stdout/stderr
+streams**. Debug and optimized profiles each passed the real decimal component's
+one unit covering its1697 vectors, plus two real selector units: all8892 frozen
+request vectors and same-object context identity/mutation. Separately linked
+input-only clients in both profiles emitted exactly8892 expected rows, SHA256
+`23927ea2bddffcb7a29e75e7aef91ad94e949654519273dab5e1d167b602a9aa`.
+
+The optimized build and one additional optimized build produced raw-identical
+6630-byte decimal libraries, 12114-byte selector libraries and 3956928-byte
+clients, without normalization. This is reproducibility of our own research
+builds; it is not target machine-byte equality. All9466 actual tracked/owned
+physical files, seven genuine pins, all103 provider payloads, resolved GCC and
+ld.bfd, source head/tree and clean status remained unchanged before/after.
+The identical original audit byte streams are represented once by
+`PHYSICAL-INPUT-AUDIT.json`; `AUDIT-IDENTITY.json` records both original identities.
+
+Each of nine semantic mutants compiled, emitted a normal full8892-row client
+transcript with exit0, differed from the independently frozen expectations, and
+failed a real Rust unit assertion with exit101:
+
+| Mutant relation | Different rows /8892 |
+| --- | ---: |
+| Both flags incorrectly choose upper | 1357 |
+| Upper arm uses lower alphabet | 1357 |
+| Empty hex prefix | 6669 |
+| Hex digit slice incorrectly ends at20 | 6669 |
+| Zero hex becomes empty | 972 |
+| Raw sign incorrectly0 | 8892 |
+| Boolean-normalized sink result | 8829 |
+| Bit0 skips the callback | 12 |
+| Decimal helper receives value/10 | 1899 |
+
+All six comparator controls passed: missing, reordered and duplicated rows
+rejected; independent status, digit and scratch byte corruptions each produced
+exactly the intended one-row mismatch. Mutant sources and actual output identities
+are retained. Repeated profiles and controls add no new unique-corpus coverage.
+
+`RUST-RESULT.json` is the unchanged actual result, SHA256
+`cd5ffe61bfb451d694d7276c0a17da5a57d2282ced123978e6970150e1e5579c`.
+`RAW-STREAMS.json` losslessly retains all136 original command streams and the
+original `CALLS.json`: 137 files,31 unique contents,10,731,101 original bytes.
+Repeated positive outputs refer to the exact immutable public expectation file;
+other unique bytes are base64 encoded. Nothing is normalized. Verify every
+original size/hash and exact decode using:
+
+```sh
+python3 -B research/work-items/RE-005-numeric-selector-94/retain_raw_streams.py --verify
+```
+
+`native-peer/` retains the independent GNU raw listings, parser and original
+native receipt. That shared receipt also has reader-context records; those are
+excluded from this selector's235-byte/63-row primary scope and denominator.
+The new component does not close a combined679-byte formatter or opaque sink.
 
 Full current `make test` is **NOT RUN**: its expanded captured-instruction
 evaluator families remain outside the user's authorization. Static repository
