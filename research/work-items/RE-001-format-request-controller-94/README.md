@@ -75,6 +75,13 @@ No source-level behavior changed after the independent pre-build review. The
 runner's narrow recipe correction resolves this task's observed proof blocker.
 The source has no Cargo dependencies, fake workspace or transplanted bytes.
 
+The independent final artifact review in
+`native/FORMATTER-ACTUAL-ARTIFACT-REVIEW.json` rechecks all 29 command records,
+58 raw streams, full target/body, all 103 provider payloads, unchanged executable
+sources, complete transcripts and every mutant mismatch ID. It also invokes
+both actual compiled input-only clients afresh: both exit zero and reproduce
+all 1,066 complete observations from raw inputs alone.
+
 ```sh
 python3 -B tools/format_request_protocol.py \
   --rustc /path/to/authenticated/1.94.1/bin/rustc \
@@ -88,6 +95,34 @@ complete target/body, frozen fixtures, own executable sources, actual cc/ld,
 HEAD/tree/status and seven pins before/after. All commands and raw stdout/stderr
 are retained, with raw streams compressed losslessly. Compiler 1.94.1 is a
 research provider, not a recovered original node compiler.
+
+The runner deliberately authenticates the installation manifests as well as
+payloads. Those manifests contain the original scratch prefix
+`/tmp/hl-resume-20261101/toolchain/prefix`; a new audited replay recreates that
+prefix from the two hash-pinned official archives with `--disable-ldconfig`.
+Installing identical payloads elsewhere changes those manifests and is not
+silently admitted as this recorded provider. Standalone direct-rustc builds of
+the component can use another installation; they need their own build record.
+
+The unchanged independent native readers are archived with their original
+path conventions. A fresh static replay stages them beside links to an actual
+repository and the authenticated provider, using a new owned analysis path:
+
+```sh
+analysis=$(mktemp -d /tmp/formatter-native.XXXXXX)
+mkdir "$analysis/native" "$analysis/toolchain"
+ln -s "$PWD" "$analysis/main"
+ln -s /tmp/hl-resume-20261101/toolchain/prefix "$analysis/toolchain/prefix"
+cp research/work-items/RE-001-format-request-controller-94/native/native_formatter_review.py "$analysis/native/"
+cp research/work-items/RE-001-format-request-controller-94/native/review_official_archive.py "$analysis/native/"
+python3 -B "$analysis/native/native_formatter_review.py"
+python3 -B "$analysis/native/review_official_archive.py"
+```
+
+This only authenticates/parses files and asks GNU objdump to read a private
+nonexecutable 448-byte data file. The archived artifact-review script records
+its original retained-build paths; the maintained runner reproduces a new
+build independently at any fresh output path.
 
 Full current `make test` and hosted CI are NOT_RUN: newly merged captured
 instruction-evaluator families have not been authorized. The draft will use
