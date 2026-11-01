@@ -1,0 +1,32 @@
+{
+  "focused": {
+    "command": "python3 -m unittest tests.test_wire_qty_rust tests.test_wire_qty_normal_form -v",
+    "tests": 11,
+    "seconds": 42.396,
+    "status": "PASS"
+  },
+  "repository_safe_checks": {
+    "command": "make doctor verify catalogue-check reproduce",
+    "status": "PASS"
+  },
+  "full_suite": {
+    "status": "NOT_YET_RUN_ON_THIS_HEAD",
+    "must_not_infer_success": true
+  },
+  "rust_build": "build-result.json",
+  "native_capture_execution": false,
+  "component_gates_changed": false,
+  "post_submission_style_checks": {
+    "research_toolchain": "Rust1.94.1",
+    "rustfmt_check": "PASS",
+    "clippy_library_D_warnings": "PASS",
+    "clippy_test_configuration_D_warnings": "PASS",
+    "focused_runner_tests": {
+      "tests": 5,
+      "seconds": 4.847,
+      "status": "PASS"
+    },
+    "both_Rust_profiles_and_all_mutants": "PASS; unchanged2540expectations",
+    "initial_failures_preserved": "rustfmt differences; Clippy manual_is_multiple_of; fixed with standard1.94integer method, no numeric relation changed"
+  }
+}
