@@ -206,11 +206,23 @@ class Elf:
 def parse_objdump_window(path):
     """Parse an objdump -d excerpt into {address: (bytes, mnemonic, operands)}."""
     line_re = re.compile(r"^\s*([0-9a-f]+):\t([0-9a-f ]+?)\t(\S+)(?:\s+(.*?))?\s*$")
+    continuation_re = re.compile(r"^\s*([0-9a-f]+):\s*((?:[0-9a-f]{2}\s*)+)\s*$")
     out = {}
+    previous = None
     with open(path) as f:
         for raw in f:
             m = line_re.match(raw.rstrip("\n"))
             if not m:
+                continuation = continuation_re.match(raw.rstrip("\n"))
+                if continuation and previous is not None:
+                    encoded, mnemonic, operands = out[previous]
+                    address = int(continuation.group(1), 16)
+                    suffix = "".join(continuation.group(2).split())
+                    if address != previous + len(encoded) // 2:
+                        raise ValueError("noncontiguous objdump continuation")
+                    if (len(encoded) + len(suffix)) // 2 > 15:
+                        raise ValueError("objdump instruction exceeds x86 length limit")
+                    out[previous] = (encoded + suffix, mnemonic, operands)
                 continue
             addr = int(m.group(1), 16)
             operands = (m.group(4) or "").strip()
@@ -218,6 +230,7 @@ def parse_objdump_window(path):
                 operands = operands.split(" #", 1)[0].strip()
             operands = re.sub(r"\s*<[^>]*>", "", operands).strip()
             out[addr] = (m.group(2).strip().replace(" ", ""), m.group(3), operands)
+            previous = addr
     return out
 
 

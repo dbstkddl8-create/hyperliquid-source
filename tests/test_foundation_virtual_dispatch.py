@@ -67,7 +67,7 @@ class TestVirtualDispatch(unittest.TestCase):
     def test_checker_passes_binary_mode(self):
         if self.binary is None:
             self.skipTest("no digest-verified node #94 binary available")
-        failures = checker.run_all(EVIDENCE, WORK_BINARY)
+        failures = checker.run_all(EVIDENCE, ARTIFACTS_BINARY)
         self.assertEqual(failures, [])
 
     def test_fast_path_stores_zero_without_calling(self):

@@ -80,13 +80,13 @@
       },
       {
         "address": "0x514b3b5",
-        "bytes": "64488b04252800",
+        "bytes": "64488b042528000000",
         "mnemonic": "mov",
         "operands": "%fs:0x28,%rax"
       },
       {
         "address": "0x514b3be",
-        "bytes": "48898424880000",
+        "bytes": "4889842488000000",
         "mnemonic": "mov",
         "operands": "%rax,0x88(%rsp)"
       },
@@ -170,13 +170,13 @@
       },
       {
         "address": "0x514b3f6",
-        "bytes": "488b8424880000",
+        "bytes": "488b842488000000",
         "mnemonic": "mov",
         "operands": "0x88(%rsp),%rax"
       },
       {
         "address": "0x514b3fe",
-        "bytes": "64482b04252800",
+        "bytes": "64482b042528000000",
         "mnemonic": "sub",
         "operands": "%fs:0x28,%rax"
       },
@@ -436,7 +436,7 @@
       },
       {
         "address": "0x54307dc",
-        "bytes": "49b99999999999",
+        "bytes": "49b99999999999999919",
         "mnemonic": "movabs",
         "operands": "$0x1999999999999999,%r9"
       },

@@ -11,6 +11,16 @@ m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
 
+def target_observations(record):
+    """Compare target facts while retaining provider receipts in raw evidence."""
+    result = copy.deepcopy(record)
+    result.pop('versions')
+    # This hashes the provider's whole frame dump. Selected actual FDE headers,
+    # extents, instruction bytes, bindings and edges are still compared below.
+    result['frames'].pop('sha256')
+    return result
+
+
 class WeakPidfdTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -21,9 +31,18 @@ class WeakPidfdTests(unittest.TestCase):
 
     def test_real_target_and_committed_evidence(self):
         self.assertEqual(m.sha(self.data), m.DIGEST)
-        self.assertEqual(self.report, json.loads((m.OUT/'evidence.json').read_text()))
+        retained = json.loads((m.OUT/'evidence.json').read_text())
+        self.assertEqual(target_observations(self.report), target_observations(retained))
         self.assertEqual([e['instruction_count'] for e in self.report['extents']], [57, 1998])
         self.assertEqual(len(self.report['edges']), 17)
+
+    def test_provider_projection_keeps_target_identity_and_extent_bytes(self):
+        changed = copy.deepcopy(self.report)
+        changed['extents'][0]['extent_sha256'] = '0' * 64
+        self.assertNotEqual(target_observations(self.report), target_observations(changed))
+        changed = copy.deepcopy(self.report)
+        changed['target']['sha256'] = '0' * 64
+        self.assertNotEqual(target_observations(self.report), target_observations(changed))
 
     def test_relocations_and_reference_denominator(self):
         m.check_bindings(self.report['relocations'])

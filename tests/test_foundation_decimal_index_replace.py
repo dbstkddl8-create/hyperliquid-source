@@ -9,17 +9,30 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "tools"))
 from foundation_decimal_index_replace import (
-    check, decimal_index_replace, parse_decimal, table_count)
+    check, decimal_index_replace, parse_decimal, parse_objdump_window, table_count)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVIDENCE = os.path.join(
     ROOT, "research", "work-items", "foundation-decimal-index-replace-94",
     "evidence.json")
-BINARY = os.path.join(ROOT, "work", "hl-node-94.bin")
+BINARY = os.path.join(ROOT, "artifacts", "node", "94", "hl-node")
 TABLE = [(0, 40), (100, 124), (200, 216)]  # counts: 5, 3, 2
 
 
 class TestParser(unittest.TestCase):
+    def test_objdump_continuation_is_part_of_previous_instruction(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = os.path.join(temporary, "excerpt.txt")
+            with open(path, "w") as handle:
+                handle.write(" 514b3b5:\t64 48 8b 04 25 28 00 \tmov %fs:0x28,%rax\n"
+                             " 514b3bc:\t00 00 \n"
+                             " 514b3be:\t48 89 84 24 08 01 00 \tmov %rax,0x108(%rsp)\n"
+                             " 514b3c5:\t00 \n")
+            rows = parse_objdump_window(path)
+        self.assertEqual(rows[0x514b3b5][0], "64488b042528000000")
+        self.assertEqual(rows[0x514b3be][0], "4889842408010000")
+        self.assertNotIn(0x514b3bc, rows)
+
     def test_empty_returns_zero(self):
         self.assertEqual(parse_decimal(b""), (False, 0, 0, True, 0))
 

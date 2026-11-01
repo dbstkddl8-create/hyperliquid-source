@@ -170,7 +170,7 @@ class BinaryTests(unittest.TestCase):
         }
         result = subprocess.run(
             ["objdump", "-d", "--start-address=0x514d770",
-             "--stop-address=0x514dcdc", WORK_BINARY],
+             "--stop-address=0x514dcdc", ARTIFACTS_BINARY],
             capture_output=True, text=True)
         self.assertEqual(result.returncode, 0)
         for va, hexbytes in samples.items():
@@ -180,6 +180,31 @@ class BinaryTests(unittest.TestCase):
             parts = line[0].split("\t")
             shown = "".join(parts[1].split())
             self.assertEqual(shown, hexbytes, va)
+
+    def test_multi_line_instruction_bytes_are_complete(self):
+        expected = {
+            "0x514d7a2": "64488b042528000000",
+            "0x514d7ab": "48898424b8000000",
+            "0x514da3d": "4889b42480000000",
+            "0x514dafe": "4889b42488000000",
+            "0x514dc19": "4c8dac2430010000",
+        }
+        with open(EVIDENCE) as handle:
+            evidence = json.load(handle)
+        by_va = {row["va"]: row for row in evidence["function"]["instructions"]}
+        for va, raw in expected.items():
+            self.assertEqual(by_va[va]["bytes"], raw, va)
+
+    def test_truncated_instruction_record_is_rejected(self):
+        with open(EVIDENCE) as handle:
+            evidence = json.load(handle)
+        record = next(row for row in evidence["function"]["instructions"]
+                      if row["va"] == "0x514d7a2")
+        record["bytes"] = record["bytes"][:14]
+        binary = load_binary()
+        sections = checker.elf_sections(binary)
+        self.assertIsNotNone(checker.check_instructions(
+            evidence, binary, sections, os.path.dirname(EVIDENCE)))
 
     def test_corruption_controls(self):
         ev, binary = load_fixture()

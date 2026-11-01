@@ -290,6 +290,18 @@ def check_function(ev, binary, sections, packet_dir):
 def check_instructions(ev, binary, sections, packet_dir):
     table = {u64(i["va"]): i for i in ev["function"]["instructions"]}
     table.update({u64(i["va"]): i for i in ev["caller_instructions"]})
+    # GNU's default seven-byte display wraps these encodings onto a second
+    # line. The retained instruction must include its complete displacement.
+    complete = {
+        0x514D7A2: "64488b042528000000",
+        0x514D7AB: "48898424b8000000",
+        0x514DA3D: "4889b42480000000",
+        0x514DAFE: "4889b42488000000",
+        0x514DC19: "4c8dac2430010000",
+    }
+    for va, raw in complete.items():
+        if va not in table or table[va]["bytes"] != raw:
+            return "incomplete instruction encoding at %#x" % va
     for va, instr in table.items():
         want = bytes.fromhex(instr["bytes"])
         got = read_va(binary, sections, va, len(want))

@@ -36,13 +36,13 @@
    },
    {
     "va": "0x514d7a2",
-    "bytes": "64488b04252800",
+    "bytes": "64488b042528000000",
     "mnemonic": "mov",
     "operands": "%fs:0x28,%rax"
    },
    {
     "va": "0x514d7ab",
-    "bytes": "48898424b80000",
+    "bytes": "48898424b8000000",
     "mnemonic": "mov",
     "operands": "%rax,0xb8(%rsp)"
    },
@@ -438,7 +438,7 @@
    },
    {
     "va": "0x514da3d",
-    "bytes": "4889b424800000",
+    "bytes": "4889b42480000000",
     "mnemonic": "mov",
     "operands": "%rsi,0x80(%rsp)"
    },
@@ -498,7 +498,7 @@
    },
    {
     "va": "0x514dafe",
-    "bytes": "4889b424880000",
+    "bytes": "4889b42488000000",
     "mnemonic": "mov",
     "operands": "%rsi,0x88(%rsp)"
    },
@@ -726,7 +726,7 @@
    },
    {
     "va": "0x514dc19",
-    "bytes": "4c8dac24300100",
+    "bytes": "4c8dac2430010000",
     "mnemonic": "lea",
     "operands": "0x130(%rsp),%r13"
    },

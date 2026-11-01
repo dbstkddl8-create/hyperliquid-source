@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PACKET = os.path.join(
     ROOT, "research", "work-items", "RE-001-recursive-destructor-94")
 RECORDS = os.path.join(PACKET, "records.json")
-BINARY = os.path.join(ROOT, "work", "hl-node-94.bin")
+BINARY = os.path.join(ROOT, "artifacts", "node", "94", "hl-node")
 
 
 def heap_of(links):
