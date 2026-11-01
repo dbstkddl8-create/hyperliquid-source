@@ -6,7 +6,7 @@ Stdlib only. Run from the repository root:
     python3 tools/foundation_span_count.py \
         --check research/work-items/foundation-span-count-94/evidence.json
 
-Every claim is re-derived from target bytes: the 43-byte window body, its
+The bounded checks re-derive from target bytes: the 43-byte window body, its
 five int3 padding bytes, the retained FDE records (window, next, the
 1514-byte callee, the FDE after the callee, and the tail-jump target, each
 locked under its own CIE read from the cie= field, never from the
@@ -22,8 +22,13 @@ mismatching check and exits nonzero.
 import hashlib
 import json
 import os
+import re
 import struct
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import elf_index
+import fde_extents
 
 BINARY = os.path.join("artifacts", "node", "94", "hl-node")
 
@@ -130,15 +135,31 @@ def check_padding(ev, binary, sections):
         raise ValueError(f"padding not all int3: {pad.hex()}")
 
 
-def check_frames(ev, packet_dir):
+def check_frames(ev, packet_dir, binary):
     fn = ev["function"]
     cal = ev["callee"]
     jt = ev["jump_target"]
     with open(os.path.join(packet_dir, "frames.txt")) as fh:
         text = fh.read()
-    # Each record is locked by its own section offset, PC range, and the
-    # cie= value -- never by the third column, which is the CIE-pointer
-    # delta, not the CIE.
+    # A single retained row must bind the offset, CIE and PC range.
+    retained = {
+        tuple(int(value, 16) for value in match)
+        for match in re.findall(
+            r"^([0-9a-f]+)\s+[0-9a-f]+\s+[0-9a-f]+\s+FDE\s+"
+            r"cie=([0-9a-f]+)\s+pc=([0-9a-f]+)\.\.([0-9a-f]+)$",
+            text, re.MULTILINE)
+    }
+    # Derive those associations independently from the authenticated ELF;
+    # another valid retained row cannot stand in for the declared function.
+    sections = elf_index.sections(binary)
+    frame = next(s for s in sections if s["name"] == ".eh_frame")
+    _, parsed = fde_extents.eh_frame_records(binary, sections)
+    actual = {
+        row["fde"] - frame["address"]:
+        (row["fde"] - frame["address"], row["cie"] - frame["address"],
+         row["start"], row["end"])
+        for row in parsed
+    }
     records = [
         (fn["fde_section_offset"], fn["start_va"], fn["end_va_exclusive"],
          fn["fde_cie"], "window"),
@@ -152,16 +173,13 @@ def check_frames(ev, packet_dir):
          jt["fde_cie"], "jump-target"),
     ]
     for off, start, end, cie, label in records:
-        if off[2:] not in text:
-            raise ValueError(f"{label} FDE section offset not in frames.txt")
-        if end is not None:
-            if f"pc={u64(start):016x}..{u64(end):016x}" not in text:
-                raise ValueError(f"{label} FDE PC range not in frames.txt")
-        else:
-            if f"pc={u64(start):016x}" not in text:
-                raise ValueError(f"{label} FDE start not in frames.txt")
-        if f"cie={cie[2:]}" not in text:
-            raise ValueError(f"{label} FDE CIE not in frames.txt")
+        native = actual.get(u64(off))
+        if (native is None or native[1] != u64(cie)
+                or native[2] != u64(start)
+                or (end is not None and native[3] != u64(end))):
+            raise ValueError(f"{label} FDE association does not match binary")
+        if native not in retained:
+            raise ValueError(f"{label} FDE association missing from frames.txt")
 
 
 def check_callee(ev, binary, sections):
@@ -247,7 +265,7 @@ def run_all(evidence_path):
     check_target_digest(ev, binary)
     check_window(ev, binary, sections)
     check_padding(ev, binary, sections)
-    check_frames(ev, packet_dir)
+    check_frames(ev, packet_dir, binary)
     check_callee(ev, binary, sections)
     check_callers(ev, binary, sections)
     check_edges(ev)

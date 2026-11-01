@@ -132,6 +132,16 @@ class TestSpanCount(unittest.TestCase):
         ev["function"]["fde_section_offset"] = "0x002b637d"
         self.assertNotEqual(run_checker_on(ev), 0)
 
+    def test_swapped_existing_fde_offset_is_rejected(self):
+        ev = good_evidence()
+        ev["function"]["fde_section_offset"] = ev["jump_target"]["fde_section_offset"]
+        self.assertNotEqual(run_checker_on(ev), 0)
+
+    def test_swapped_existing_fde_cie_is_rejected(self):
+        ev = good_evidence()
+        ev["function"]["fde_cie"] = ev["callee"]["fde_cie"]
+        self.assertNotEqual(run_checker_on(ev), 0)
+
     def test_corrupt_next_fde_offset(self):
         ev = good_evidence()
         ev["function"]["next_fde_section_offset"] = "0x002b6399"

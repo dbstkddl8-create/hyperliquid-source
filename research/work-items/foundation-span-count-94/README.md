@@ -99,25 +99,6 @@ finds exactly zero sites, so this packet has seven files (no
 prefixes, and data sections are not a complete xref census, so the claim
 is scoped to direct `e8` calls, not to all possible references.
 
-## Twins and uniqueness
-
-Claimed-body byte comparison against the previously claimed windows
-(#123-#149) gives a maximum similarity of 0.256 (against #127) on both
-the max-length and min-length measures, well below the 0.60 cutoff.
-Against the full corpus of FDE bodies, the best non-self matches are
-0.349 on the max-length measure (at `0x4f9b140`, 37 bytes) and 0.545 on
-the min-length measure with the 20-byte substance floor (at `0x508f2a0`,
-22 bytes). The 0.545 body is a call-and-tail-jump forwarder
-(`endbr64; push; mov; call; mov; pop; jmp`) with no arithmetic and no
-store: it shares the window's prologue and tail shape over its short
-length, which is why the min-length measure scores it highest, but it
-does not compute or store anything. The window's mnemonic skeleton
-(`endbr64 push mov call mov sub mov sar sub mov pop jmp`) is a
-singleton among 31,898 single-call FDE windows of 20-150 bytes, raw and
-ret-truncated alike (the window has no `ret`, so the two forms coincide).
-Its nearest neighbor `0x53c7470` scores 0.279 max-length / 0.375
-min-length: same callee and same destination field, different rule.
-
 ## Rule edges
 
 | Span start | Span end | Model | Stored |
@@ -127,8 +108,8 @@ min-length: same callee and same destination field, different rule.
 | `0x3000` | `0x3000` | Empty span: 0 - 1 wraps | `0xffffffff` |
 | `0x2000` | `0x1ffc` | Negative span -4: `sar` gives -1, minus 1 wraps | `0xfffffffe` |
 
-The edges are model checks on the recorded arithmetic, not executions
-of the target binary. The low two bits of the byte span are discarded by
+The edges supply the fields after the callee returns. They are model checks
+on the recorded arithmetic, not executions of the target binary. The low two bits of the byte span are discarded by
 the shift, so spans differing only in those bits map to the same count.
 
 ## Rejected candidates
@@ -146,8 +127,9 @@ the shift, so spans differing only in those bits map to the same count.
 - The shift is arithmetic on 64 bits and the subtract is 32-bit, so an
   empty span wraps to `0xffffffff` and a negative span wraps through the
   sign extension; both are recorded as edges, not as faults.
-- The window has no `ret`: control leaves by tail jump, and the stored
-  count is the window's only observable effect in this packet.
+- The window has no `ret`: control leaves by tail jump. The count store
+  is the only directly modeled local write; the callee and tail target
+  may have additional effects that are not modeled here.
 - Nearest-symbol annotations from the disassembler carry large offsets
   and are not identifications; no symbol name is claimed.
 - The zero-caller claim covers direct `e8` calls in `.text` only.
@@ -162,25 +144,24 @@ python3 tools/foundation_span_count.py \
 python3 -m unittest tests.test_foundation_span_count -v
 ```
 
-The checker re-derives the window body, its padding, the five retained
-FDE records, the callee body and padding, the call and tail-jump
+The checker re-derives the window body, its padding, and all five
+FDE offset/CIE/PC associations from the authenticated binary. Each association
+must also match a single retained frame record. It checks the callee body and padding, the call and tail-jump
 encodings, the span-count rule on its edges, and the zero-caller scan
 from target bytes. The unit tests run the checker on the real evidence
 plus corruption controls: each control mutates one recorded fact (body
 hash, padding, target digest, call target, jump target, FDE offsets,
-callee hash/extent/padding, caller list, edge values, store field) and
+callee hash/extent/padding, caller list, edge values, store field, and
+substituted existing FDE offsets or CIEs) and
 must make the checker fail.
 
-## Why this packet
+## Bounded contribution
 
-The window is a complete, self-contained computation in 43 bytes: one
-call, one span-to-count conversion, one store, one tail jump. Its shape
-is unique among small single-call windows, its closest claimed relative
-scores 0.256, and its closest corpus body is a forwarder that computes
-nothing. The shared callee and the reset sibling are disclosed, not
-hidden: three callers share the callee, but only this window computes
-the span count, and the neighbor's constant-zero store to the same field
-is a different rule, not a twin.
+The window contains one call, a span-to-count conversion, one direct local
+store, and a tail jump. The recorded arithmetic uses the object fields after
+the callee returns. Callee and tail-target effects are outside this model.
+No corpus-wide similarity or uniqueness claim is established by this packet,
+and no component-completion or reconstructed-byte identity credit is requested.
 
 ## Files
 
