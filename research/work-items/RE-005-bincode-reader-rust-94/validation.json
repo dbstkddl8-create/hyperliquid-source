@@ -1,0 +1,26 @@
+{
+  "focused": {
+    "command": "python3 -m unittest tests.test_bincode_reader_rust tests.test_bincode_varint_slow -v",
+    "tests": 27,
+    "seconds": 64.456,
+    "status": "PASS"
+  },
+  "independent_static_verifier": "PASS; bothReaders2/12calls22oldvectors",
+  "safe_checks": {
+    "command": "make doctor verify catalogue-check reproduce",
+    "status": "PASS"
+  },
+  "rust_tests_per_profile": {
+    "existing": 12,
+    "new": 2,
+    "profiles": 2,
+    "status": "PASS"
+  },
+  "full_suite": {
+    "status": "NOT_YET_RUN_ON_THIS_HEAD",
+    "no_pass_claim": true
+  },
+  "first_development_mutant_build": "FAILED: unused rest binding under -D warnings; not semantic rejection credit",
+  "final_compiled_mutants": "3PASS rejection controls; actual value differences and assertions",
+  "component_gates_changed": false
+}

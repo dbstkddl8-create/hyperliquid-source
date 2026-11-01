@@ -42,17 +42,45 @@ type.
 
 ## Deliberately unsupported behavior
 
-When eight bytes or fewer remain, the target branches to a reader-based slow
-path whose semantics are not established by the retained evidence. The Rust
-decoder returns `FastPathUnavailable` before reading a tag in that case. This
-includes empty and apparently truncated inputs: classifying them as EOF,
-truncation or another target error would extend the claim beyond the binary
-evidence.
+The existing `decode_u64_slice_fast` API returns `FastPathUnavailable` before
+reading a tag when eight bytes or fewer remain. Its contract stays limited to
+the fast slice path. Separate `read_u32` and `read_u64` APIs implement the Reader
+paths established by the merged `RE-005-bincode-slow-widths` packet, as described
+below; they do not silently change the older API's domain or error protocol.
 
-The component does not implement u16/u32 decoding, u128 or signed/zigzag
-encoding, fixed-width mode, serde integration, the reader slow path, target
-error enum values, or caller/type mappings. It makes no binary-identity or
+The component does not implement u16/u128 decoding, signed/zigzag encoding,
+fixed-width mode, serde integration, automatic slice-wrapper dispatch, the
+target error enum's Rust layout or caller/type mappings. It makes no binary-identity or
 full-serialization-recovery claim and does not advance a progress gate.
+
+## Established Reader paths
+
+`read_u32(&mut &[u8], PayloadOrder)` and `read_u64(&mut &[u8], PayloadOrder)`
+implement the direct Reader bodies `0x466d850..0x466d975` and
+`0x466d980..0x466dabc`, plus the value effect of their shared 14-byte error
+builder. Both little- and big-endian payload orders are qualified. Non-minimal
+representations are accepted. An empty input needs one byte and consumes none.
+For nonempty input the marker is consumed **before** payload checks and errors.
+Short payloads remain unread; `UnexpectedEnd.needed` is the missing-byte count.
+Success consumes the marker and the complete payload and retains the suffix.
+
+The u32 Reader rejects markers `0xfd/0xfe/0xff`, with expected code 2 and found
+codes 3/4/12. The u64 Reader accepts `0xfd` and rejects `0xfe/0xff`, with expected
+code 3 and found codes 4/12. `ReaderError` is an independently authored research
+representation of those payloads, not a recovered Rust enum layout. Notably,
+the original u64 slice **fast** arm passes expected code 2 for `0xfe`, while its
+Reader passes 3. Calling the Reader at every length is not a reconstruction of
+that wrapper's length-dependent error selection.
+
+The [Reader Rust packet](../../research/work-items/RE-005-bincode-reader-rust-94/README.md)
+retains the pre-implementation fixture, complete-body hashes, real two-profile
+build/comparison results, cursor/suffix checks and compiled corruption controls.
+No captured node is executed or emulated by the new component runner:
+
+```sh
+python3 tools/bincode_reader_rust.py --rustc /path/to/rust-1.94.1/bin/rustc \
+  --output /new/output/directory --controls
+```
 
 ## Intended API and build scope
 
@@ -63,6 +91,7 @@ root workspace. Its public surface is limited to:
 - `encode_u32` and `encode_u64`, appending to a caller-owned `Vec<u8>`;
 - `decode_u64_slice_fast`, returning the decoded value and consumed length;
 - explicit `PayloadOrder` and `DecodeError` types.
+- direct `read_u32` and `read_u64` Reader relations with a separate `ReaderError`.
 
 The crate uses the repository-pinned Rust toolchain. Once the implementation
 is present, build it from the repository root with:

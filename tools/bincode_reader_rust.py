@@ -241,7 +241,7 @@ def build(binary, rustc, output, controls=False):
     if controls:
         source = SOURCE.read_text()
         for name, old_text, new_text in [
-            ('skip-marker-consumption','*input = rest;','/* incorrect: retain marker */'),
+            ('skip-marker-consumption','*input = rest;','let _ = rest; /* incorrect: retain marker */'),
             ('shortfall-off-by-one','needed: width - input.len()','needed: width - input.len() + 1'),
             ('ignore-payload-order','PayloadOrder::Big => payload.iter().fold','PayloadOrder::Big => payload.iter().rev().fold')]:
             need(source.count(old_text) == 1, 'ambiguous Rust mutation site')
