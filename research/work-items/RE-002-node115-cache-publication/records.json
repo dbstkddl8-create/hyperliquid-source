@@ -1,0 +1,1438 @@
+{
+  "target_sha256": "a6e2897cd051213d004802deca416e8eca62b7a8278fa39f249e98c3867b5301",
+  "owner": {
+    "start": 97181008,
+    "end": 97182682,
+    "sha256": "f4cc818ee02b994599bfc53910323d3edf8420d0b404c2e5060faab72524c349",
+    "instructions": 454
+  },
+  "frames": {
+    "fde": {
+      "va": "0xfe3804",
+      "bytes_hex": "2800000030c9330044a5cc048a06000000410e108602430d064d83078c068d058e048f030378060c07080000"
+    },
+    "cie": {
+      "va": "0xca6ed8",
+      "bytes_hex": "1400000000000000017a5200017810011b0c070890010000"
+    }
+  },
+  "parameters": {
+    "middle_shift": 1,
+    "last_shift": 62,
+    "middle_offset": 8,
+    "last_offset": 16,
+    "cache_slot": 105773664
+  },
+  "cfg": {
+    "edges": {
+      "0x5cadd50": [
+        "0x5cadd51"
+      ],
+      "0x5cadd51": [
+        "0x5cadd54"
+      ],
+      "0x5cadd54": [
+        "0x5cadd56"
+      ],
+      "0x5cadd56": [
+        "0x5cadd58"
+      ],
+      "0x5cadd58": [
+        "0x5cadd5a"
+      ],
+      "0x5cadd5a": [
+        "0x5cadd5c"
+      ],
+      "0x5cadd5c": [
+        "0x5cadd5d"
+      ],
+      "0x5cadd5d": [
+        "0x5cadd61"
+      ],
+      "0x5cadd61": [
+        "0x5cadd63"
+      ],
+      "0x5cadd63": [
+        "0x5cadd65"
+      ],
+      "0x5cadd65": [
+        "0x5cadd68"
+      ],
+      "0x5cadd68": [
+        "0x5cadd6a"
+      ],
+      "0x5cadd6a": [
+        "0x5cadd6d"
+      ],
+      "0x5cadd6d": [
+        "0x5cadd70"
+      ],
+      "0x5cadd70": [
+        "0x5cadd7a"
+      ],
+      "0x5cadd7a": [
+        "0x5cadd7c"
+      ],
+      "0x5cadd7c": [
+        "0x5cadd7e",
+        "0x5caddf3"
+      ],
+      "0x5cadd7e": [
+        "0x5cadd81"
+      ],
+      "0x5cadd81": [
+        "0x5cadd84"
+      ],
+      "0x5cadd84": [
+        "0x5cadd87"
+      ],
+      "0x5cadd87": [
+        "0x5cadd8a"
+      ],
+      "0x5cadd8a": [
+        "0x5cadd8c"
+      ],
+      "0x5cadd8c": [
+        "0x5cadd91"
+      ],
+      "0x5cadd91": [
+        "0x5cadd94"
+      ],
+      "0x5cadd94": [
+        "0x5cadd96"
+      ],
+      "0x5cadd96": [
+        "0x5cadd99"
+      ],
+      "0x5cadd99": [
+        "0x5cadd9c"
+      ],
+      "0x5cadd9c": [
+        "0x5cadd9e"
+      ],
+      "0x5cadd9e": [
+        "0x5cadda2"
+      ],
+      "0x5cadda2": [
+        "0x5cadda6"
+      ],
+      "0x5cadda6": [
+        "0x5caddaa"
+      ],
+      "0x5caddaa": [
+        "0x5caddac",
+        "0x5caddfa"
+      ],
+      "0x5caddac": [
+        "0x5caddb1"
+      ],
+      "0x5caddb1": [
+        "0x5caddb3"
+      ],
+      "0x5caddb3": [
+        "0x5caddb6"
+      ],
+      "0x5caddb6": [
+        "0x5caddb8"
+      ],
+      "0x5caddb8": [
+        "0x5caddbb"
+      ],
+      "0x5caddbb": [
+        "0x5caddbd"
+      ],
+      "0x5caddbd": [
+        "0x5caddc0"
+      ],
+      "0x5caddc0": [
+        "0x5caddc5"
+      ],
+      "0x5caddc5": [
+        "0x5caddca"
+      ],
+      "0x5caddca": [
+        "0x5caddcd"
+      ],
+      "0x5caddcd": [
+        "0x5caddd0"
+      ],
+      "0x5caddd0": [
+        "0x5caddd2"
+      ],
+      "0x5caddd2": [
+        "0x5caddd5"
+      ],
+      "0x5caddd5": [
+        "0x5caddd8"
+      ],
+      "0x5caddd8": [
+        "0x5cadddb"
+      ],
+      "0x5cadddb": [
+        "0x5caddde"
+      ],
+      "0x5caddde": [
+        "0x5cadde2"
+      ],
+      "0x5cadde2": [
+        "0x5cadde4"
+      ],
+      "0x5cadde4": [
+        "0x5cadde8"
+      ],
+      "0x5cadde8": [
+        "0x5caddeb"
+      ],
+      "0x5caddeb": [
+        "0x5cadded"
+      ],
+      "0x5cadded": [
+        "0x5caddf1"
+      ],
+      "0x5caddf1": [
+        "0x5cade15"
+      ],
+      "0x5caddf3": [
+        "0x5caddf5"
+      ],
+      "0x5caddf5": [
+        "0x5cae39b"
+      ],
+      "0x5caddfa": [
+        "0x5cade02"
+      ],
+      "0x5cade02": [
+        "0x5cade0a"
+      ],
+      "0x5cade0a": [
+        "0x5cade12"
+      ],
+      "0x5cade12": [
+        "0x5cade15"
+      ],
+      "0x5cade15": [
+        "0x5cade19"
+      ],
+      "0x5cade19": [
+        "0x5cade1b"
+      ],
+      "0x5cade1b": [
+        "0x5cade1d"
+      ],
+      "0x5cade1d": [
+        "0x5cade22"
+      ],
+      "0x5cade22": [
+        "0x5cade25"
+      ],
+      "0x5cade25": [
+        "0x5cade27"
+      ],
+      "0x5cade27": [
+        "0x5cade2a"
+      ],
+      "0x5cade2a": [
+        "0x5cade2c"
+      ],
+      "0x5cade2c": [
+        "0x5cade30"
+      ],
+      "0x5cade30": [
+        "0x5cade32",
+        "0x5cade43"
+      ],
+      "0x5cade32": [
+        "0x5cade34"
+      ],
+      "0x5cade34": [
+        "0x5cade39"
+      ],
+      "0x5cade39": [
+        "0x5cade3c"
+      ],
+      "0x5cade3c": [
+        "0x5cade3e"
+      ],
+      "0x5cade3e": [
+        "0x5cade41"
+      ],
+      "0x5cade41": [
+        "0x5cade43"
+      ],
+      "0x5cade43": [
+        "0x5cade46"
+      ],
+      "0x5cade46": [
+        "0x5cade48"
+      ],
+      "0x5cade48": [
+        "0x5cade4a"
+      ],
+      "0x5cade4a": [
+        "0x5cade4d"
+      ],
+      "0x5cade4d": [
+        "0x5cade50"
+      ],
+      "0x5cade50": [
+        "0x5cade52"
+      ],
+      "0x5cade52": [
+        "0x5cade58"
+      ],
+      "0x5cade58": [
+        "0x5cade5b"
+      ],
+      "0x5cade5b": [
+        "0x5cade5e"
+      ],
+      "0x5cade5e": [
+        "0x5cade62"
+      ],
+      "0x5cade62": [
+        "0x5cade66"
+      ],
+      "0x5cade66": [
+        "0x5cade68"
+      ],
+      "0x5cade68": [
+        "0x5cade6b"
+      ],
+      "0x5cade6b": [
+        "0x5cade6d"
+      ],
+      "0x5cade6d": [
+        "0x5cade73"
+      ],
+      "0x5cade73": [
+        "0x5cade76"
+      ],
+      "0x5cade76": [
+        "0x5cade7b"
+      ],
+      "0x5cade7b": [
+        "0x5cade7e"
+      ],
+      "0x5cade7e": [
+        "0x5cade80"
+      ],
+      "0x5cade80": [
+        "0x5cade86"
+      ],
+      "0x5cade86": [
+        "0x5cade89"
+      ],
+      "0x5cade89": [
+        "0x5cade8c"
+      ],
+      "0x5cade8c": [
+        "0x5cade8f"
+      ],
+      "0x5cade8f": [
+        "0x5cade93"
+      ],
+      "0x5cade93": [
+        "0x5cade96"
+      ],
+      "0x5cade96": [
+        "0x5cade99"
+      ],
+      "0x5cade99": [
+        "0x5cade9c"
+      ],
+      "0x5cade9c": [
+        "0x5cadea0"
+      ],
+      "0x5cadea0": [
+        "0x5cadea4"
+      ],
+      "0x5cadea4": [
+        "0x5cadea7"
+      ],
+      "0x5cadea7": [
+        "0x5cadeaa"
+      ],
+      "0x5cadeaa": [
+        "0x5cadeb0"
+      ],
+      "0x5cadeb0": [
+        "0x5cadeb3"
+      ],
+      "0x5cadeb3": [
+        "0x5cadeb6"
+      ],
+      "0x5cadeb6": [
+        "0x5cadeba"
+      ],
+      "0x5cadeba": [
+        "0x5cadebd"
+      ],
+      "0x5cadebd": [
+        "0x5cadec1"
+      ],
+      "0x5cadec1": [
+        "0x5cadec4"
+      ],
+      "0x5cadec4": [
+        "0x5cadecb"
+      ],
+      "0x5cadecb": [
+        "0x5cadece"
+      ],
+      "0x5cadece": [
+        "0x5caded5"
+      ],
+      "0x5caded5": [
+        "0x5caded9"
+      ],
+      "0x5caded9": [
+        "0x5cadedc"
+      ],
+      "0x5cadedc": [
+        "0x5cadedf"
+      ],
+      "0x5cadedf": [
+        "0x5cadee6"
+      ],
+      "0x5cadee6": [
+        "0x5cadee9"
+      ],
+      "0x5cadee9": [
+        "0x5cadef3"
+      ],
+      "0x5cadef3": [
+        "0x5cadef7"
+      ],
+      "0x5cadef7": [
+        "0x5cadefa"
+      ],
+      "0x5cadefa": [
+        "0x5cadefd"
+      ],
+      "0x5cadefd": [
+        "0x5cadf07"
+      ],
+      "0x5cadf07": [
+        "0x5cadf0a"
+      ],
+      "0x5cadf0a": [
+        "0x5cadf0d"
+      ],
+      "0x5cadf0d": [
+        "0x5cadf11"
+      ],
+      "0x5cadf11": [
+        "0x5cadf15"
+      ],
+      "0x5cadf15": [
+        "0x5cadf18"
+      ],
+      "0x5cadf18": [
+        "0x5cadf1b"
+      ],
+      "0x5cadf1b": [
+        "0x5cadf22"
+      ],
+      "0x5cadf22": [
+        "0x5cadf26"
+      ],
+      "0x5cadf26": [
+        "0x5cadf29"
+      ],
+      "0x5cadf29": [
+        "0x5cadf2c"
+      ],
+      "0x5cadf2c": [
+        "0x5cadf2f"
+      ],
+      "0x5cadf2f": [
+        "0x5cadf32"
+      ],
+      "0x5cadf32": [
+        "0x5cadf35"
+      ],
+      "0x5cadf35": [
+        "0x5cadf38"
+      ],
+      "0x5cadf38": [
+        "0x5cadf3b"
+      ],
+      "0x5cadf3b": [
+        "0x5cadf3e"
+      ],
+      "0x5cadf3e": [
+        "0x5cadf44"
+      ],
+      "0x5cadf44": [
+        "0x5cadf48"
+      ],
+      "0x5cadf48": [
+        "0x5cadf4b"
+      ],
+      "0x5cadf4b": [
+        "0x5cadf4f"
+      ],
+      "0x5cadf4f": [
+        "0x5cadf56"
+      ],
+      "0x5cadf56": [
+        "0x5cadf59"
+      ],
+      "0x5cadf59": [
+        "0x5cadf5c"
+      ],
+      "0x5cadf5c": [
+        "0x5cadf5f"
+      ],
+      "0x5cadf5f": [
+        "0x5cadf62"
+      ],
+      "0x5cadf62": [
+        "0x5cadf65"
+      ],
+      "0x5cadf65": [
+        "0x5cadf68"
+      ],
+      "0x5cadf68": [
+        "0x5cadf6b"
+      ],
+      "0x5cadf6b": [
+        "0x5cadf70"
+      ],
+      "0x5cadf70": [
+        "0x5cadf73"
+      ],
+      "0x5cadf73": [
+        "0x5cadf76"
+      ],
+      "0x5cadf76": [
+        "0x5cadf79"
+      ],
+      "0x5cadf79": [
+        "0x5cadf7d"
+      ],
+      "0x5cadf7d": [
+        "0x5cadf80"
+      ],
+      "0x5cadf80": [
+        "0x5cadf83"
+      ],
+      "0x5cadf83": [
+        "0x5cadf86"
+      ],
+      "0x5cadf86": [
+        "0x5cadf89"
+      ],
+      "0x5cadf89": [
+        "0x5cadf8e"
+      ],
+      "0x5cadf8e": [
+        "0x5cadf91"
+      ],
+      "0x5cadf91": [
+        "0x5cadf94"
+      ],
+      "0x5cadf94": [
+        "0x5cadf9b"
+      ],
+      "0x5cadf9b": [
+        "0x5cadfa2"
+      ],
+      "0x5cadfa2": [
+        "0x5cadfa6"
+      ],
+      "0x5cadfa6": [
+        "0x5cadfad"
+      ],
+      "0x5cadfad": [
+        "0x5cadfaf",
+        "0x5cadfcf"
+      ],
+      "0x5cadfaf": [
+        "0x5cadfb4"
+      ],
+      "0x5cadfb4": [
+        "0x5cadfb6"
+      ],
+      "0x5cadfb6": [
+        "0x5cadfb9"
+      ],
+      "0x5cadfb9": [
+        "0x5cadfbb"
+      ],
+      "0x5cadfbb": [
+        "0x5cadfbe"
+      ],
+      "0x5cadfbe": [
+        "0x5cadfc0"
+      ],
+      "0x5cadfc0": [
+        "0x5cadfc3"
+      ],
+      "0x5cadfc3": [
+        "0x5cadfc6"
+      ],
+      "0x5cadfc6": [
+        "0x5cadfc9"
+      ],
+      "0x5cadfc9": [
+        "0x5cadfcc"
+      ],
+      "0x5cadfcc": [
+        "0x5cadfcf"
+      ],
+      "0x5cadfcf": [
+        "0x5cadfd3"
+      ],
+      "0x5cadfd3": [
+        "0x5cadfd5"
+      ],
+      "0x5cadfd5": [
+        "0x5cadfd8"
+      ],
+      "0x5cadfd8": [
+        "0x5cadfdc"
+      ],
+      "0x5cadfdc": [
+        "0x5cadfdf"
+      ],
+      "0x5cadfdf": [
+        "0x5cadfe9"
+      ],
+      "0x5cadfe9": [
+        "0x5cadfec"
+      ],
+      "0x5cadfec": [
+        "0x5cadfef"
+      ],
+      "0x5cadfef": [
+        "0x5cadff6"
+      ],
+      "0x5cadff6": [
+        "0x5cadff9"
+      ],
+      "0x5cadff9": [
+        "0x5cadffb",
+        "0x5cae016"
+      ],
+      "0x5cadffb": [
+        "0x5cadffe"
+      ],
+      "0x5cadffe": [
+        "0x5cae008"
+      ],
+      "0x5cae008": [
+        "0x5cae00b"
+      ],
+      "0x5cae00b": [
+        "0x5cae011"
+      ],
+      "0x5cae011": [
+        "0x5cae014"
+      ],
+      "0x5cae014": [
+        "0x5cae016",
+        "0x5cae039"
+      ],
+      "0x5cae016": [
+        "0x5cae018"
+      ],
+      "0x5cae018": [
+        "0x5cae01b"
+      ],
+      "0x5cae01b": [
+        "0x5cae01e"
+      ],
+      "0x5cae01e": [
+        "0x5cae020"
+      ],
+      "0x5cae020": [
+        "0x5cae026"
+      ],
+      "0x5cae026": [
+        "0x5cae02a"
+      ],
+      "0x5cae02a": [
+        "0x5cae02d"
+      ],
+      "0x5cae02d": [
+        "0x5cae033"
+      ],
+      "0x5cae033": [
+        "0x5cae036"
+      ],
+      "0x5cae036": [
+        "0x5cae039"
+      ],
+      "0x5cae039": [
+        "0x5cae03b"
+      ],
+      "0x5cae03b": [
+        "0x5cae03d"
+      ],
+      "0x5cae03d": [
+        "0x5cae042"
+      ],
+      "0x5cae042": [
+        "0x5cae048",
+        "0x5cae251"
+      ],
+      "0x5cae048": [
+        "0x5cae04c"
+      ],
+      "0x5cae04c": [
+        "0x5cae051"
+      ],
+      "0x5cae051": [
+        "0x5cae054"
+      ],
+      "0x5cae054": [
+        "0x5cae057"
+      ],
+      "0x5cae057": [
+        "0x5cae05d"
+      ],
+      "0x5cae05d": [
+        "0x5cae05f"
+      ],
+      "0x5cae05f": [
+        "0x5cae061"
+      ],
+      "0x5cae061": [
+        "0x5cae067",
+        "0x5cae260"
+      ],
+      "0x5cae067": [
+        "0x5cae06a"
+      ],
+      "0x5cae06a": [
+        "0x5cae071"
+      ],
+      "0x5cae071": [
+        "0x5cae07b"
+      ],
+      "0x5cae07b": [
+        "0x5cae07e"
+      ],
+      "0x5cae07e": [
+        "0x5cae082"
+      ],
+      "0x5cae082": [
+        "0x5cae084",
+        "0x5cae0bd"
+      ],
+      "0x5cae084": [
+        "0x5cae089"
+      ],
+      "0x5cae089": [
+        "0x5cae08e"
+      ],
+      "0x5cae08e": [
+        "0x5cae091"
+      ],
+      "0x5cae091": [
+        "0x5cae093"
+      ],
+      "0x5cae093": [
+        "0x5cae096"
+      ],
+      "0x5cae096": [
+        "0x5cae099"
+      ],
+      "0x5cae099": [
+        "0x5cae09d"
+      ],
+      "0x5cae09d": [
+        "0x5cae09f"
+      ],
+      "0x5cae09f": [
+        "0x5cae0a3"
+      ],
+      "0x5cae0a3": [
+        "0x5cae0a7"
+      ],
+      "0x5cae0a7": [
+        "0x5cae0a9"
+      ],
+      "0x5cae0a9": [
+        "0x5cae0ac"
+      ],
+      "0x5cae0ac": [
+        "0x5cae0ae"
+      ],
+      "0x5cae0ae": [
+        "0x5cae0b1"
+      ],
+      "0x5cae0b1": [
+        "0x5cae0b4"
+      ],
+      "0x5cae0b4": [
+        "0x5cae0b7"
+      ],
+      "0x5cae0b7": [
+        "0x5cae0ba"
+      ],
+      "0x5cae0ba": [
+        "0x5cae0bd"
+      ],
+      "0x5cae0bd": [
+        "0x5cae0c1"
+      ],
+      "0x5cae0c1": [
+        "0x5cae0c4"
+      ],
+      "0x5cae0c4": [
+        "0x5cae0cb"
+      ],
+      "0x5cae0cb": [
+        "0x5cae0cd"
+      ],
+      "0x5cae0cd": [
+        "0x5cae0cf"
+      ],
+      "0x5cae0cf": [
+        "0x5cae0d1"
+      ],
+      "0x5cae0d1": [
+        "0x5cae0d7"
+      ],
+      "0x5cae0d7": [
+        "0x5cae0db"
+      ],
+      "0x5cae0db": [
+        "0x5cae0de"
+      ],
+      "0x5cae0de": [
+        "0x5cae0e4"
+      ],
+      "0x5cae0e4": [
+        "0x5cae0e7"
+      ],
+      "0x5cae0e7": [
+        "0x5cae0ea"
+      ],
+      "0x5cae0ea": [
+        "0x5cae0ed"
+      ],
+      "0x5cae0ed": [
+        "0x5cae0f0"
+      ],
+      "0x5cae0f0": [
+        "0x5cae0f3"
+      ],
+      "0x5cae0f3": [
+        "0x5cae0f6"
+      ],
+      "0x5cae0f6": [
+        "0x5cae0fa"
+      ],
+      "0x5cae0fa": [
+        "0x5cae0fe"
+      ],
+      "0x5cae0fe": [
+        "0x5cae101"
+      ],
+      "0x5cae101": [
+        "0x5cae103"
+      ],
+      "0x5cae103": [
+        "0x5cae109"
+      ],
+      "0x5cae109": [
+        "0x5cae10d"
+      ],
+      "0x5cae10d": [
+        "0x5cae110"
+      ],
+      "0x5cae110": [
+        "0x5cae114"
+      ],
+      "0x5cae114": [
+        "0x5cae117"
+      ],
+      "0x5cae117": [
+        "0x5cae11b"
+      ],
+      "0x5cae11b": [
+        "0x5cae11f"
+      ],
+      "0x5cae11f": [
+        "0x5cae122"
+      ],
+      "0x5cae122": [
+        "0x5cae126"
+      ],
+      "0x5cae126": [
+        "0x5cae12a"
+      ],
+      "0x5cae12a": [
+        "0x5cae12d"
+      ],
+      "0x5cae12d": [
+        "0x5cae134"
+      ],
+      "0x5cae134": [
+        "0x5cae138"
+      ],
+      "0x5cae138": [
+        "0x5cae13b"
+      ],
+      "0x5cae13b": [
+        "0x5cae13e"
+      ],
+      "0x5cae13e": [
+        "0x5cae142"
+      ],
+      "0x5cae142": [
+        "0x5cae146"
+      ],
+      "0x5cae146": [
+        "0x5cae149"
+      ],
+      "0x5cae149": [
+        "0x5cae14c"
+      ],
+      "0x5cae14c": [
+        "0x5cae14f"
+      ],
+      "0x5cae14f": [
+        "0x5cae152"
+      ],
+      "0x5cae152": [
+        "0x5cae157"
+      ],
+      "0x5cae157": [
+        "0x5cae15a"
+      ],
+      "0x5cae15a": [
+        "0x5cae160",
+        "0x5cae23c"
+      ],
+      "0x5cae160": [
+        "0x5cae165"
+      ],
+      "0x5cae165": [
+        "0x5cae168"
+      ],
+      "0x5cae168": [
+        "0x5cae16d"
+      ],
+      "0x5cae16d": [
+        "0x5cae170"
+      ],
+      "0x5cae170": [
+        "0x5cae173"
+      ],
+      "0x5cae173": [
+        "0x5cae179"
+      ],
+      "0x5cae179": [
+        "0x5cae17c"
+      ],
+      "0x5cae17c": [
+        "0x5cae17f"
+      ],
+      "0x5cae17f": [
+        "0x5cae182"
+      ],
+      "0x5cae182": [
+        "0x5cae188"
+      ],
+      "0x5cae188": [
+        "0x5cae18a"
+      ],
+      "0x5cae18a": [
+        "0x5cae18d"
+      ],
+      "0x5cae18d": [
+        "0x5cae190"
+      ],
+      "0x5cae190": [
+        "0x5cae195"
+      ],
+      "0x5cae195": [
+        "0x5cae197"
+      ],
+      "0x5cae197": [
+        "0x5cae19a"
+      ],
+      "0x5cae19a": [
+        "0x5cae19d"
+      ],
+      "0x5cae19d": [
+        "0x5cae1a3"
+      ],
+      "0x5cae1a3": [
+        "0x5cae1a5"
+      ],
+      "0x5cae1a5": [
+        "0x5cae1a8"
+      ],
+      "0x5cae1a8": [
+        "0x5cae1ab"
+      ],
+      "0x5cae1ab": [
+        "0x5cae1b0"
+      ],
+      "0x5cae1b0": [
+        "0x5cae1b2"
+      ],
+      "0x5cae1b2": [
+        "0x5cae1b5"
+      ],
+      "0x5cae1b5": [
+        "0x5cae1b8"
+      ],
+      "0x5cae1b8": [
+        "0x5cae1be"
+      ],
+      "0x5cae1be": [
+        "0x5cae1c0"
+      ],
+      "0x5cae1c0": [
+        "0x5cae1c3"
+      ],
+      "0x5cae1c3": [
+        "0x5cae1c6"
+      ],
+      "0x5cae1c6": [
+        "0x5cae1cc"
+      ],
+      "0x5cae1cc": [
+        "0x5cae1cf"
+      ],
+      "0x5cae1cf": [
+        "0x5cae1d3"
+      ],
+      "0x5cae1d3": [
+        "0x5cae1d7"
+      ],
+      "0x5cae1d7": [
+        "0x5cae1da"
+      ],
+      "0x5cae1da": [
+        "0x5cae1dd"
+      ],
+      "0x5cae1dd": [
+        "0x5cae1e0"
+      ],
+      "0x5cae1e0": [
+        "0x5cae1e3"
+      ],
+      "0x5cae1e3": [
+        "0x5cae1e6"
+      ],
+      "0x5cae1e6": [
+        "0x5cae1e9"
+      ],
+      "0x5cae1e9": [
+        "0x5cae1eb"
+      ],
+      "0x5cae1eb": [
+        "0x5cae1ef"
+      ],
+      "0x5cae1ef": [
+        "0x5cae1f6"
+      ],
+      "0x5cae1f6": [
+        "0x5cae1fa"
+      ],
+      "0x5cae1fa": [
+        "0x5cae1fd"
+      ],
+      "0x5cae1fd": [
+        "0x5cae203"
+      ],
+      "0x5cae203": [
+        "0x5cae207"
+      ],
+      "0x5cae207": [
+        "0x5cae20e"
+      ],
+      "0x5cae20e": [
+        "0x5cae212"
+      ],
+      "0x5cae212": [
+        "0x5cae215"
+      ],
+      "0x5cae215": [
+        "0x5cae219"
+      ],
+      "0x5cae219": [
+        "0x5cae223"
+      ],
+      "0x5cae223": [
+        "0x5cae227"
+      ],
+      "0x5cae227": [
+        "0x5cae22a"
+      ],
+      "0x5cae22a": [
+        "0x5cae22d"
+      ],
+      "0x5cae22d": [
+        "0x5cae230"
+      ],
+      "0x5cae230": [
+        "0x5cae233"
+      ],
+      "0x5cae233": [
+        "0x5cae236"
+      ],
+      "0x5cae236": [
+        "0x5cae239"
+      ],
+      "0x5cae239": [
+        "0x5cae23c"
+      ],
+      "0x5cae23c": [
+        "0x5cae240"
+      ],
+      "0x5cae240": [
+        "0x5cae244"
+      ],
+      "0x5cae244": [
+        "0x5cae24a"
+      ],
+      "0x5cae24a": [
+        "0x5cae24c",
+        "0x5cae274"
+      ],
+      "0x5cae24c": [
+        "0x5cae2f3"
+      ],
+      "0x5cae251": [
+        "0x5cae25b"
+      ],
+      "0x5cae25b": [
+        "0x5cae35e"
+      ],
+      "0x5cae260": [
+        "0x5cae264"
+      ],
+      "0x5cae264": [
+        "0x5cae268"
+      ],
+      "0x5cae268": [
+        "0x5cae26c"
+      ],
+      "0x5cae26c": [
+        "0x5cae272"
+      ],
+      "0x5cae272": [
+        "0x5cae274",
+        "0x5cae2f3"
+      ],
+      "0x5cae274": [
+        "0x5cae278"
+      ],
+      "0x5cae278": [
+        "0x5cae27a"
+      ],
+      "0x5cae27a": [
+        "0x5cae27f"
+      ],
+      "0x5cae27f": [
+        "0x5cae283"
+      ],
+      "0x5cae283": [
+        "0x5cae289"
+      ],
+      "0x5cae289": [
+        "0x5cae28d"
+      ],
+      "0x5cae28d": [
+        "0x5cae290"
+      ],
+      "0x5cae290": [
+        "0x5cae294"
+      ],
+      "0x5cae294": [
+        "0x5cae29a"
+      ],
+      "0x5cae29a": [
+        "0x5cae29e"
+      ],
+      "0x5cae29e": [
+        "0x5cae2a1"
+      ],
+      "0x5cae2a1": [
+        "0x5cae2a3"
+      ],
+      "0x5cae2a3": [
+        "0x5cae2a8"
+      ],
+      "0x5cae2a8": [
+        "0x5cae2ac"
+      ],
+      "0x5cae2ac": [
+        "0x5cae2af"
+      ],
+      "0x5cae2af": [
+        "0x5cae2b2"
+      ],
+      "0x5cae2b2": [
+        "0x5cae2b6"
+      ],
+      "0x5cae2b6": [
+        "0x5cae2b8",
+        "0x5cae2f3"
+      ],
+      "0x5cae2b8": [
+        "0x5cae2bd"
+      ],
+      "0x5cae2bd": [
+        "0x5cae2c2"
+      ],
+      "0x5cae2c2": [
+        "0x5cae2c5"
+      ],
+      "0x5cae2c5": [
+        "0x5cae2c7"
+      ],
+      "0x5cae2c7": [
+        "0x5cae2ca"
+      ],
+      "0x5cae2ca": [
+        "0x5cae2cc"
+      ],
+      "0x5cae2cc": [
+        "0x5cae2ce"
+      ],
+      "0x5cae2ce": [
+        "0x5cae2d1"
+      ],
+      "0x5cae2d1": [
+        "0x5cae2d5"
+      ],
+      "0x5cae2d5": [
+        "0x5cae2d7"
+      ],
+      "0x5cae2d7": [
+        "0x5cae2dd"
+      ],
+      "0x5cae2dd": [
+        "0x5cae2e1"
+      ],
+      "0x5cae2e1": [
+        "0x5cae2e4"
+      ],
+      "0x5cae2e4": [
+        "0x5cae2e9"
+      ],
+      "0x5cae2e9": [
+        "0x5cae2ed"
+      ],
+      "0x5cae2ed": [
+        "0x5cae2f0"
+      ],
+      "0x5cae2f0": [
+        "0x5cae2f3"
+      ],
+      "0x5cae2f3": [
+        "0x5cae2fd"
+      ],
+      "0x5cae2fd": [
+        "0x5cae300"
+      ],
+      "0x5cae300": [
+        "0x5cae307"
+      ],
+      "0x5cae307": [
+        "0x5cae30a"
+      ],
+      "0x5cae30a": [
+        "0x5cae310"
+      ],
+      "0x5cae310": [
+        "0x5cae313"
+      ],
+      "0x5cae313": [
+        "0x5cae315"
+      ],
+      "0x5cae315": [
+        "0x5cae31f"
+      ],
+      "0x5cae31f": [
+        "0x5cae322"
+      ],
+      "0x5cae322": [
+        "0x5cae324"
+      ],
+      "0x5cae324": [
+        "0x5cae328"
+      ],
+      "0x5cae328": [
+        "0x5cae32e"
+      ],
+      "0x5cae32e": [
+        "0x5cae330",
+        "0x5cae35e"
+      ],
+      "0x5cae330": [
+        "0x5cae335"
+      ],
+      "0x5cae335": [
+        "0x5cae337"
+      ],
+      "0x5cae337": [
+        "0x5cae33a"
+      ],
+      "0x5cae33a": [
+        "0x5cae33c"
+      ],
+      "0x5cae33c": [
+        "0x5cae33f"
+      ],
+      "0x5cae33f": [
+        "0x5cae343"
+      ],
+      "0x5cae343": [
+        "0x5cae34d"
+      ],
+      "0x5cae34d": [
+        "0x5cae357"
+      ],
+      "0x5cae357": [
+        "0x5cae35b"
+      ],
+      "0x5cae35b": [
+        "0x5cae35e"
+      ],
+      "0x5cae35e": [
+        "0x5cae368"
+      ],
+      "0x5cae368": [
+        "0x5cae36b"
+      ],
+      "0x5cae36b": [
+        "0x5cae36e"
+      ],
+      "0x5cae36e": [
+        "0x5cae374"
+      ],
+      "0x5cae374": [
+        "0x5cae377"
+      ],
+      "0x5cae377": [
+        "0x5cae37a"
+      ],
+      "0x5cae37a": [
+        "0x5cae380"
+      ],
+      "0x5cae380": [
+        "0x5cae38a"
+      ],
+      "0x5cae38a": [
+        "0x5cae38d"
+      ],
+      "0x5cae38d": [
+        "0x5cae390"
+      ],
+      "0x5cae390": [
+        "0x5cae393"
+      ],
+      "0x5cae393": [
+        "0x5cae397"
+      ],
+      "0x5cae397": [
+        "0x5cae39b"
+      ],
+      "0x5cae39b": [
+        "0x5cae39e"
+      ],
+      "0x5cae39e": [
+        "0x5cae3a1"
+      ],
+      "0x5cae3a1": [
+        "0x5cae3a8"
+      ],
+      "0x5cae3a8": [
+        "0x5cae3ab"
+      ],
+      "0x5cae3ab": [
+        "0x5cae3ae"
+      ],
+      "0x5cae3ae": [
+        "0x5cae3b3"
+      ],
+      "0x5cae3b3": [
+        "0x5cae3b6"
+      ],
+      "0x5cae3b6": [
+        "0x5cae3ba"
+      ],
+      "0x5cae3ba": [
+        "0x5cae3bd"
+      ],
+      "0x5cae3bd": [
+        "0x5cae3c1"
+      ],
+      "0x5cae3c1": [
+        "0x5cae3c4"
+      ],
+      "0x5cae3c4": [
+        "0x5cae3c8"
+      ],
+      "0x5cae3c8": [
+        "0x5cae3cb"
+      ],
+      "0x5cae3cb": [
+        "0x5cae3cf"
+      ],
+      "0x5cae3cf": [
+        "0x5cae3d0"
+      ],
+      "0x5cae3d0": [
+        "0x5cae3d2"
+      ],
+      "0x5cae3d2": [
+        "0x5cae3d4"
+      ],
+      "0x5cae3d4": [
+        "0x5cae3d6"
+      ],
+      "0x5cae3d6": [
+        "0x5cae3d8"
+      ],
+      "0x5cae3d8": [
+        "0x5cae3d9"
+      ],
+      "0x5cae3d9": []
+    },
+    "constant_definitions": {
+      "0x5cadd70": "0x8000000000000000",
+      "0x5cae251": "0x8000000000000000",
+      "0x5cae2f3": "0x8000000000000000"
+    },
+    "at_publication": [
+      "constant@5cadd70:8000000000000000",
+      "constant@5cae251:8000000000000000",
+      "constant@5cae2f3:8000000000000000"
+    ],
+    "at_returns": {
+      "0x5cae3d9": [
+        "constant@5cadd70:8000000000000000",
+        "constant@5cae251:8000000000000000",
+        "constant@5cae2f3:8000000000000000"
+      ]
+    },
+    "publication_dominates_returns": true,
+    "structurally_reachable_rows": 454,
+    "direct_calls": {
+      "97181772": 97182688
+    }
+  },
+  "cache_region": {
+    "type": 8,
+    "flags": 3,
+    "address": 105905728,
+    "offset": 105893384,
+    "size": 2263780,
+    "name": ".bss"
+  },
+  "prior_spec_sha256": "d84ce3fb8f1d82bc498a34f4380d48201248c5006c5f6ef22d6cfd8152d2bcf4",
+  "relation": "For raw A=R13,B=RDX at publication and valid writable cache: C0=A|H; C1=((B<<1 mod2^64)|(A>>63))|H; C2=(B>>62)|H; raw RAX return=A. H=2^63.",
+  "captured_instructions_executed": false,
+  "limits": "Static marker/CFG and local publication equations only. Prefix feature values/meaning, CPUID/XGETBV behavior, opaque callee effects, input reachability, concurrent coherence, source/Rust ABI, whole-detector equivalence and component gates remain unproved."
+}
