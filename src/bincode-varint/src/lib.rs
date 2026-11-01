@@ -1,7 +1,8 @@
 //! Independently authored reconstruction of the node #94 integer-varint core.
 //!
 //! The encode and size operations cover the observed u32/u64 paths. Decoding
-//! is intentionally restricted to the evidence-backed u64 slice fast path.
+//! includes the original u64 slice fast-path API and the separately qualified
+//! u32/u64 Reader value/cursor relation. Their error paths remain distinct.
 
 #![forbid(unsafe_code)]
 
@@ -29,6 +30,76 @@ pub struct DecodedU64 {
     pub value: u64,
     /// Number of input bytes consumed by the selected arm.
     pub consumed: usize,
+}
+
+/// Own research representation of the established Reader error payloads.
+/// These Rust variants do not claim the original enum's memory layout.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ReaderError {
+    /// Additional payload bytes needed. The marker has already been consumed;
+    /// an empty original input instead needs one byte and consumes nothing.
+    UnexpectedEnd { needed: usize },
+    /// Raw expected/found code bytes passed to the captured error builder.
+    InvalidIntegerType { expected_code: u8, found_code: u8 },
+}
+
+/// Read the established u32 Reader path, advancing the slice on all outcomes.
+/// An available marker is consumed even on failure; short payloads are retained.
+/// This is not the original reader object's ABI or the u32 slice wrapper.
+pub fn read_u32(input: &mut &[u8], order: PayloadOrder) -> Result<u32, ReaderError> {
+    read_integer(input, order, 2).map(|value| value as u32)
+}
+
+/// Read the established u64 Reader path at any remaining length.
+/// Unlike `decode_u64_slice_fast`, this exposes the Reader's raw error codes
+/// and cursor effects. It does not select the original fast/slow slice wrapper.
+pub fn read_u64(input: &mut &[u8], order: PayloadOrder) -> Result<u64, ReaderError> {
+    read_integer(input, order, 3)
+}
+
+fn read_integer(
+    input: &mut &[u8],
+    order: PayloadOrder,
+    expected_code: u8,
+) -> Result<u64, ReaderError> {
+    let Some((&tag, rest)) = input.split_first() else {
+        return Err(ReaderError::UnexpectedEnd { needed: 1 });
+    };
+    *input = rest;
+    let width = match tag {
+        0..=250 => return Ok(u64::from(tag)),
+        U16_MARKER => 2,
+        U32_MARKER => 4,
+        U64_MARKER if expected_code == 3 => 8,
+        _ => {
+            let found_code = match tag {
+                U64_MARKER => 3,
+                U128_MARKER => 4,
+                _ => 12,
+            };
+            return Err(ReaderError::InvalidIntegerType {
+                expected_code,
+                found_code,
+            });
+        }
+    };
+    if input.len() < width {
+        return Err(ReaderError::UnexpectedEnd {
+            needed: width - input.len(),
+        });
+    }
+    let payload = &input[..width];
+    let value = match order {
+        PayloadOrder::Little => payload
+            .iter()
+            .rev()
+            .fold(0, |n, &byte| (n << 8) | u64::from(byte)),
+        PayloadOrder::Big => payload
+            .iter()
+            .fold(0, |n, &byte| (n << 8) | u64::from(byte)),
+    };
+    *input = &input[width..];
+    Ok(value)
 }
 
 /// Outcomes for inputs outside the established u64 slice fast path.
