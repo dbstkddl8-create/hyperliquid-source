@@ -6,6 +6,7 @@
 #![forbid(unsafe_code)]
 
 mod arithmetic;
+mod decimal_scaled;
 mod evm;
 mod quantity;
 mod scale;
@@ -13,6 +14,7 @@ mod spot_wire;
 mod tick;
 
 pub use arithmetic::{ArithmeticOutcome, ArithmeticStatus};
+pub use decimal_scaled::{ScaledDecimalOutcome, UnsupportedDecimalParts, decimal_to_scaled_u64};
 pub use evm::{EvmAmountError, INTERNAL_AMOUNT_EXCLUSIVE_MAX, U256, evm_amount_to_internal};
 pub use quantity::{
     AdmissionError, BigNotional, InternalAmount, Notional, Price, QuantityKind, SignedNotional,
