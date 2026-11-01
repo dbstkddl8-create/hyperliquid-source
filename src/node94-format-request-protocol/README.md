@@ -17,7 +17,7 @@ index and quantity indirection with their low six bits.
 `Row` contains two live `Cell<u64>` words. Both indirect quantities read the
 low16 of the selected row's **second** word. A value request reads that row's
 current data and second word; a successful explicit index also rebases the
-next implicit index. Every value receives a fresh full24-byte `Context` with
+next implicit index. Every value receives a fresh full 24-byte `Context` with
 the original destination/table and decoded options/quantities. Proxy edits to
 that context do not survive into the next value. Literal requests use the
 writer method sampled once before the first encoded callback, even when a
@@ -26,13 +26,13 @@ proxies may follow the context's current destination/table and current methods.
 
 The API has chosen safe roles and valid references, immutable stream bytes,
 live row/method cells and normal, finite callbacks. Opaque words are symbolic
-identities rather than native addresses. `Context` has a C24-byte layout to
+identities rather than native addresses. `Context` has a 24-byte C layout to
 make its word projection explicit; this does not establish an original nominal
 type, vtable or ABI. Stream/frame/control corruption, concurrent mutation,
 faults and unwind are outside the bridge. `Refusal` checks truncated input or
 missing rows lazily; those are this API's policy, not recovered native errors.
 
-The actual build uses the authenticated research rustc1.94.1, without Cargo,
+The actual build uses the authenticated research rustc 1.94.1, without Cargo,
 registry dependencies, an invented lockfile or a root workspace:
 
 ```sh

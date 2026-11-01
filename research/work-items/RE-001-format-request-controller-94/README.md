@@ -1,13 +1,13 @@
 # RE-001: node94's complete normal formatter request relation
 
 Component: foundation. Bounded question: what finite writer/value request,
-context, descriptor-index and low-AL relation does the complete448-byte
+context, descriptor-index and low-AL relation does the complete 448-byte
 function at ELF VA `0x1571d90..0x1571f50` establish, when its dynamic callbacks
 are supplied normally? The earlier accepted #1216 identifies licensed libcore
 code but explicitly leaves this request/input relation open. This packet adds
 an independently authored Rust controller for that qualified relation.
 
-Target node94 is91,774,280 bytes, SHA-256
+Target node94 is 91,774,280 bytes, SHA-256
 `3b7179cd967d1b13b683e05debfc685ad4c750e918226402d5d575eff1c0459f`.
 Base main is `3324e50333042b391312515e542279ca21f63dc8`; its seven genuine
 reference gitlinks remain pinned. The unlicensed can1357 implementation was
@@ -17,7 +17,7 @@ identity is changed.
 ## Independent preparation and native authority
 
 The pre-source proof and declarative oracle are under `oracle/`. An independent
-worker froze1,066 unique cases before this implementation. Expectations consume
+worker froze 1,066 unique cases before this implementation. Expectations consume
 high-level literal/value plans; the separate serializer produces raw stream
 bytes. The Rust driver receives only the latter and supplied environment
 scripts. `formatter448-freeze.json` binds the exact original uncompressed
@@ -28,30 +28,52 @@ labels-only duplicate-ID correction; no semantic case was changed.
 The provisional proof's published-only basis is supplemented, without editing
 that frozen proof, by `native/FORMATTER-NATIVE-REVIEW.json` and
 `FORMATTER-OFFICIAL-REVIEW.json`: fresh full-target admission, executable
-section/PT_LOAD coordinates, actual52-byte FDE/CIE and caller/GOT/RELATIVE edge,
-all448 raw bytes,138 GNU rows,26 local branches, three indirect calls and one
+section/PT_LOAD coordinates, actual 52-byte FDE/CIE and caller/GOT/RELATIVE edge,
+all 448 raw bytes, 138 GNU rows, 26 local branches, three indirect calls and one
 indirect tail. Complete official libcore archive
 `ca804049dc84fa29d47c1ceb7012c7688a6848b5c858bd598ba484a0652ab256`
-was reauthenticated; its entire named448-byte function matches raw and has no
+was reauthenticated; its entire named 448-byte function matches raw and has no
 source relocation fields. These are static observations, not target execution
 or a compiler-origin uniqueness result.
 
-Direct input preserves raw callback low AL; encoded input returns canonical0/1.
+Direct input preserves raw callback low AL; encoded input returns canonical 0/1.
 The structural proof covers literal forms, field order/endian widths, both
 low16 quantities from the same live paired-row representation, explicit-index
-rebasing, cached outer writer and full24-byte G-context reset. The domain and
+rebasing, cached outer writer and full 24-byte G-context reset. The domain and
 excluded raw pointer/frame/control/unwind behaviors are stated in the frozen
 proof and the component README. Supplied nested requests are real callbacks,
 not an original renderer or private ABI.
 
 ## Actual build and checks
 
-The initial source-preservation commit intentionally precedes the experiment.
-At that commit the build and comparisons are PENDING, not historical passes.
-The runner and independent peer review will record fresh actual O0/O3 builds,
-input-only observations, external tests, same-recipe own rlib rebuilds,
-compiled semantic mutants and complete comparator corruption controls. The
-source has no Cargo dependencies, fake workspace or transplanted bytes.
+Source commit `6c4a39f56885b188d464486582bc59675252176f` was preserved on
+the fork before the first experiment. That experiment stopped at an actual
+own-rlib reproducibility failure: the runner used `rebuild.rlib`, and rustc
+embeds the output basename in archive member names. Its O0 observations and
+external tests had passed, but no O3/mutant result existed. Complete raw command
+streams and the original differing archive identities remain under
+`failures/c1-rebuild-basename/`. An independent ar reader confirms identical
+member payloads and different member names. The correction keeps the output
+basename fixed in a separate directory; it does not mask or normalize bytes.
+
+Fresh corrected run `build-c2/` at clean, pushed source commit
+`63621fb578c1dd717722f2ddb5f6e937b53f469c` completed successfully:
+
+- O0 and O3 each match all 1,066 complete JSON transcripts and final row/method
+  states: 1,054 qualified native-domain cases plus 12 chosen safe refusals.
+- All three independent external Rust test methods pass under each profile.
+  Identical recipes with the same basename produce raw-equal own rlibs under
+  each profile. These are own-library rebuilds, not target byte comparisons.
+- Four actual compiled semantic mutants change direct status, index rebasing,
+  quantity source and cached method behavior. The unchanged comparator rejects
+  respectively 254, 66, 98 and 4 transcripts over the same 1,066-case corpus.
+- Three Python control methods pass: exact independent oracle regeneration,
+  complete comparator field/count corruption and real compressed-input
+  corruption. Raw stdout/stderr are retained.
+
+No source-level behavior changed after the independent pre-build review. The
+runner's narrow recipe correction resolves this task's observed proof blocker.
+The source has no Cargo dependencies, fake workspace or transplanted bytes.
 
 ```sh
 python3 -B tools/format_request_protocol.py \
@@ -61,10 +83,10 @@ python3 -B -m unittest tests.test_format_request_protocol -v
 ```
 
 `provider/PROVIDER-AUDIT.json` binds the official compiler/std archives,
-installed manifests and all103 payloads. The runner checks every payload,
+installed manifests and all 103 payloads. The runner checks every payload,
 complete target/body, frozen fixtures, own executable sources, actual cc/ld,
 HEAD/tree/status and seven pins before/after. All commands and raw stdout/stderr
-are retained, with raw streams compressed losslessly. Compiler1.94.1 is a
+are retained, with raw streams compressed losslessly. Compiler 1.94.1 is a
 research provider, not a recovered original node compiler.
 
 Full current `make test` and hosted CI are NOT_RUN: newly merged captured
