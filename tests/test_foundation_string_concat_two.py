@@ -9,6 +9,7 @@ corruption controls that must make the checkers fail.
 import hashlib
 import importlib.util
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -18,7 +19,7 @@ import unittest
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PACKET_DIR = os.path.join(
     REPO_ROOT, "research", "work-items", "RE-001-string-concat-two-94")
-BINARY = os.path.join(REPO_ROOT, "work", "hl-node-94.bin")
+BINARY = os.path.join(REPO_ROOT, "artifacts", "node", "94", "hl-node")
 
 sys.path.insert(0, REPO_ROOT)
 
@@ -102,24 +103,33 @@ class BinaryTest(unittest.TestCase):
         self.assertEqual(module.lea_target(elf, 0x514BC31), 0x1F822D)
 
     def test_excerpt_regeneration_is_stable(self):
+        names = ("window.objdump.txt", "landing.objdump.txt", "callers.objdump.txt", "plt.objdump.txt")
         before = {}
-        for name in ("window.objdump.txt", "landing.objdump.txt",
-                     "callers.objdump.txt", "plt.objdump.txt"):
-            with open(os.path.join(PACKET_DIR, name), "rb") as f:
-                before[name] = hashlib.sha256(f.read()).hexdigest()
-        # Relative binary path: objdump embeds the path in the
-        # excerpt header, so an absolute path would change the
-        # hashes (the same trap prior packets fixed).
-        result = subprocess.run(
-            [sys.executable,
-             os.path.join(PACKET_DIR, "export_excerpts.py"),
-             "--binary", os.path.join("work", "hl-node-94.bin")],
-            cwd=REPO_ROOT, capture_output=True, text=True)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        for name, digest in before.items():
-            with open(os.path.join(PACKET_DIR, name), "rb") as f:
-                self.assertEqual(hashlib.sha256(f.read()).hexdigest(), digest,
-                                 name)
+        for name in names:
+            with open(os.path.join(PACKET_DIR, name), "rb") as handle:
+                before[name] = handle.read()
+        with tempfile.TemporaryDirectory() as temporary:
+            packet = os.path.join(temporary, "packet")
+            shutil.copytree(PACKET_DIR, packet)
+            result = subprocess.run(
+                [sys.executable, os.path.join(packet, "export_excerpts.py"),
+                 "--binary", "artifacts/node/94/hl-node"],
+                cwd=REPO_ROOT, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for name in names:
+                with open(os.path.join(packet, name), "rb") as handle:
+                    fresh = handle.read().replace(
+                        b"artifacts/node/94/hl-node:", b"work/hl-node-94.bin:")
+                # Compare byte partitions; GNU releases may spell the
+                # implicit ES segment differently on unaligned caller slices.
+                pattern = rb"^\s*([0-9a-f]+):\s+((?:[0-9a-f]{2}(?:\s|$))+)"
+                rows = lambda raw: [(va, b"".join(code.split())) for va, code in
+                                    re.findall(pattern, raw, re.M)]
+                self.assertTrue(rows(fresh), name)
+                self.assertEqual(rows(fresh), rows(before[name]), name)
+        for name in names:
+            with open(os.path.join(PACKET_DIR, name), "rb") as handle:
+                self.assertEqual(handle.read(), before[name], name)
 
     def test_tampered_records_fail_verifier(self):
         with tempfile.TemporaryDirectory() as tmp:

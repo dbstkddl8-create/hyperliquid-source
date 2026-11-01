@@ -17,7 +17,7 @@ import unittest
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PACKET_DIR = os.path.join(
     REPO_ROOT, "research", "work-items", "RE-001-chain-walk-dispatch-94")
-BINARY = os.path.join(REPO_ROOT, "work", "hl-node-94.bin")
+BINARY = os.path.join(REPO_ROOT, "artifacts", "node", "94", "hl-node")
 
 sys.path.insert(0, REPO_ROOT)
 
@@ -158,12 +158,12 @@ class BinaryTests(unittest.TestCase):
                         before[name] = f.read()
             result = subprocess.run(
                 [sys.executable, os.path.join(packet_copy, "export_excerpts.py"),
-                 "--binary", "work/hl-node-94.bin"],
+                 "--binary", "artifacts/node/94/hl-node"],
                 capture_output=True, text=True, cwd=REPO_ROOT)
             self.assertEqual(result.returncode, 0, result.stderr)
             for name, blob in before.items():
                 with open(os.path.join(packet_copy, name), "rb") as f:
-                    self.assertEqual(f.read(), blob, name)
+                    self.assertEqual(f.read().replace(b"artifacts/node/94/hl-node:", b"work/hl-node-94.bin:"), blob, name)
 
 
 class CorruptionTests(unittest.TestCase):

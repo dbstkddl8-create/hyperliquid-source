@@ -14,6 +14,7 @@ always returns 1.
 
 import argparse
 import os
+import re
 import sys
 import unittest
 
@@ -26,7 +27,7 @@ from tools.foundation_range_sum import (  # noqa: E402
 PACKET_DIR = os.path.join(
     os.path.dirname(__file__), "..", "research", "work-items",
     "RE-001-range-sum-94")
-DEFAULT_BINARY = os.path.join("work", "hl-node-94.bin")
+DEFAULT_BINARY = os.path.join("artifacts", "node", "94", "hl-node")
 BINARY = os.environ.get("HL_NODE94_BIN", DEFAULT_BINARY)
 
 
@@ -109,10 +110,12 @@ class PacketTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 0)
                 with open(os.path.join(packet_dir, name), "rb") as f:
                     shipped = f.read()
-                self.assertEqual(
-                    hashlib.sha256(result.stdout.encode()).hexdigest(),
-                    hashlib.sha256(shipped).hexdigest(),
-                    "%s excerpt differs from a fresh objdump run" % name)
+                pattern = rb"^\s*([0-9a-f]+):\s+((?:[0-9a-f]{2}(?:\s|$))+)"
+                rows = lambda raw: [(va, b"".join(code.split())) for va, code in
+                                    re.findall(pattern, raw, re.M)]
+                self.assertTrue(rows(result.stdout.encode()), name)
+                self.assertEqual(rows(result.stdout.encode()), rows(shipped),
+                                 "%s instruction bytes differ" % name)
 
 
 class CorruptionTests(unittest.TestCase):

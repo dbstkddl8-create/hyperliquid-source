@@ -17,7 +17,7 @@ import unittest
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PACKET_DIR = os.path.join(
     REPO_ROOT, "research", "work-items", "RE-001-counted-ptr-dispose-94")
-BINARY = os.path.join(REPO_ROOT, "work", "hl-node-94.bin")
+BINARY = os.path.join(REPO_ROOT, "artifacts", "node", "94", "hl-node")
 
 sys.path.insert(0, REPO_ROOT)
 
@@ -127,21 +127,27 @@ class PacketTests(unittest.TestCase):
         self.assertEqual(check_packet(PACKET_DIR, BINARY), [])
 
     def test_excerpts_regenerate_identically(self):
+        names = ("window.objdump.txt", "guard.objdump.txt")
         before = {}
-        for name in ("window.objdump.txt", "guard.objdump.txt"):
-            with open(os.path.join(PACKET_DIR, name), "rb") as f:
-                before[name] = f.read()
-        # Relative binary path: objdump prints the path as given
-        # in the excerpt header, so an absolute path would change
-        # the bytes (the same trap #1336's test fixed).
-        result = subprocess.run(
-            [sys.executable, os.path.join(PACKET_DIR, "export_excerpts.py"),
-             "--binary", os.path.join("work", "hl-node-94.bin")],
-            capture_output=True, text=True, cwd=REPO_ROOT)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        for name, data in before.items():
-            with open(os.path.join(PACKET_DIR, name), "rb") as f:
-                self.assertEqual(f.read(), data, name)
+        for name in names:
+            with open(os.path.join(PACKET_DIR, name), "rb") as handle:
+                before[name] = handle.read()
+        with tempfile.TemporaryDirectory() as temporary:
+            packet = os.path.join(temporary, "packet")
+            shutil.copytree(PACKET_DIR, packet)
+            result = subprocess.run(
+                [sys.executable, os.path.join(packet, "export_excerpts.py"),
+                 "--binary", "artifacts/node/94/hl-node"],
+                cwd=REPO_ROOT, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for name in names:
+                with open(os.path.join(packet, name), "rb") as handle:
+                    fresh = handle.read().replace(
+                        b"artifacts/node/94/hl-node:", b"work/hl-node-94.bin:")
+                self.assertEqual(fresh, before[name], name)
+        for name in names:
+            with open(os.path.join(PACKET_DIR, name), "rb") as handle:
+                self.assertEqual(handle.read(), before[name], name)
 
     def test_sampled_excerpt_instructions_match_binary(self):
         # Pre-submit self-check: three instructions sampled from

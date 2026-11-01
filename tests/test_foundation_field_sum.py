@@ -5,7 +5,7 @@ Run from the repository root:
 
     python3 tests/test_foundation_field_sum.py
 
-The binary path defaults to the digest-verified work copy; pass
+The binary path defaults to the canonical captured artifact; pass
 ``--binary`` to point at another copy of node #94.  All expectations
 are read from the bytes: the per-entry contribution is the qword at
 [slot + 0x50], the callee return is discarded, the sum wraps at 64
@@ -14,6 +14,7 @@ bits, the empty range stores 0, and the function always returns 1.
 
 import argparse
 import os
+import re
 import sys
 import unittest
 
@@ -26,7 +27,7 @@ from tools.foundation_field_sum import (  # noqa: E402
 PACKET_DIR = os.path.join(
     os.path.dirname(__file__), "..", "research", "work-items",
     "RE-001-field-sum-94")
-DEFAULT_BINARY = os.path.join("work", "hl-node-94.bin")
+DEFAULT_BINARY = os.path.join("artifacts", "node", "94", "hl-node")
 BINARY = os.environ.get("HL_NODE94_BIN", DEFAULT_BINARY)
 
 
@@ -101,23 +102,34 @@ class PacketTests(unittest.TestCase):
         self.assertIn("ALL CHECKS PASSED", result.stdout)
 
     def test_excerpts_regenerate_byte_identically(self):
-        import hashlib
+        import shutil
         import subprocess
+        import tempfile
         packet_dir = os.path.abspath(PACKET_DIR)
-        for name, start, stop in (
-                ("window.objdump.txt", "0x514bcd0", "0x514bd40"),
-                ("callee.objdump.txt", "0x5032f40", "0x5032f4d")):
-            result = subprocess.run(
-                ["objdump", "-d", "--start-address=%s" % start,
-                 "--stop-address=%s" % stop, BINARY],
-                capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0)
+        names = ("window.objdump.txt", "callee.objdump.txt")
+        before = {}
+        for name in names:
             with open(os.path.join(packet_dir, name), "rb") as f:
-                shipped = f.read()
-            self.assertEqual(
-                hashlib.sha256(result.stdout.encode()).hexdigest(),
-                hashlib.sha256(shipped).hexdigest(),
-                "%s excerpt differs from a fresh objdump run" % name)
+                before[name] = f.read()
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = os.path.join(temporary, "packet")
+            shutil.copytree(packet_dir, copied)
+            result = subprocess.run(
+                [sys.executable, os.path.join(copied, "export_excerpts.py"),
+                 "--binary", BINARY],
+                capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            pattern = rb"^\s*([0-9a-f]+):\s+((?:[0-9a-f]{2}(?:\s|$))+)"
+            rows = lambda raw: [(va, b"".join(code.split())) for va, code in
+                                re.findall(pattern, raw, re.M)]
+            for name in names:
+                with open(os.path.join(copied, name), "rb") as f:
+                    fresh = f.read()
+                self.assertTrue(rows(fresh), name)
+                self.assertEqual(rows(fresh), rows(before[name]), name)
+        for name in names:
+            with open(os.path.join(packet_dir, name), "rb") as f:
+                self.assertEqual(f.read(), before[name], name)
 
 
 class CorruptionTests(unittest.TestCase):
