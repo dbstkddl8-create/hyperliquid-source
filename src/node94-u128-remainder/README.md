@@ -1,16 +1,16 @@
 # node94 unsigned128 remainder numerical component
 
 `remainder(u128, core::num::NonZeroU128) -> u128` implements the complete
-nonzero-divisor value rule proved from node94's complete197-byte leaf at
+nonzero-divisor value rule proved from node94's complete 197-byte leaf at
 ELFVA `0x565f7f0..0x565f8b5`. The implementation is independently authored,
 core-only, unsafe-free Rust with no external dependency or Cargo workspace.
-The128-step high-prefix loop uses no division/remainder operator. The ordinary
-unit fixture contains13 cases extracted from an independently frozen53,366-case
+The 128-step high-prefix loop uses no division/remainder operator. The ordinary
+unit fixture contains 13 cases extracted from an independently frozen 53,366-case
 mathematical authority before `lib.rs` existed. The separately linked production
-client receives input-only transcripts and is checked on all53,366 cases.
+client receives input-only transcripts and is checked on all 53,366 cases.
 
 The real build scope is this standalone numerical library and its own input-only
-I/O client, compiled directly by the authenticated research Rust1.94.1
+I/O client, compiled directly by the authenticated research Rust 1.94.1
 (e408947bf, LLVM21.1.8). It is not an original node build or ABI recovery.
 No Cargo.lock is applicable: there are no registry or non-core dependencies.
 Native bytes, theorem, full-source/artifact provenance, exact recipes, logs,

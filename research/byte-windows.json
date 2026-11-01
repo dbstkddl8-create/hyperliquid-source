@@ -2,7 +2,7 @@
   "schema_version": 1,
   "reviewed_on": "2026-11-01",
   "scope": "Selected compiled-code comparison windows; no full-module byte denominator or whole-node equivalence.",
-  "attribution": "Shared libcore and Zstandard dependency comparisons are tracked once under the foundation research work area. This is not exclusive first-party base ownership or a completed module.",
+  "attribution": "Shared libcore, compiler-builtins and Zstandard dependency comparisons are tracked once under the foundation research work area. This is not exclusive first-party base ownership or a completed module.",
   "canonical_candidates": "One candidate per target interval; the reviewed ThinLTO adapter supersedes the older native artifact for that interval. Old non-relocation differences remain in prior_candidate and original evidence. Rebuild repetitions, negative controls, cross-release duplicates and overlapping semantic packets add no denominator credit.",
   "targets": {
     "node94": {
@@ -27,7 +27,9 @@
     "research/work-items/RE-002-zstd-asm-correspondence/evidence/collector/REPORT.json": "77afb91272e5d11e8bf6dfb31e84377916f6b59d381b35047151303bfc26212e",
     "research/work-items/RE-002-zstd-asm-correspondence/evidence/collector/positive-1/text.bin": "6d6fa64d8848a212cedad6ad4092b2477924c53da6dec111f87d3b3c3c81b72a",
     "research/work-items/RE-003-pr-integration-1185-1241/libcore-review.json": "7b482ff05c752d1add22b431ba1e978ebc9918efa6d4ab5d144549b9664b89a0",
-    "research/work-items/RE-014-node115-field-adapter-drift/observed/records.json": "ac48db86e79b7461e313771ca65028bf8d61d926cbf9ad1054118a879ac4a83b"
+    "research/work-items/RE-014-node115-field-adapter-drift/observed/records.json": "ac48db86e79b7461e313771ca65028bf8d61d926cbf9ad1054118a879ac4a83b",
+    "research/work-items/RE-004-u128-remainder-94/native/official-unmangled-197.bin": "12f5828bd833666b6023e761036da32c29aeb7d1e7eedbb93d734f730f391e26",
+    "research/work-items/RE-004-u128-remainder-94/native/record.json": "d5e4c91a1c17fc572243340ce92e61033e7d692771fbf43d7c53b0d6916a0107"
   },
   "windows": [
     {
@@ -293,6 +295,25 @@
           "relocations"
         ]
       }
+    },
+    {
+      "id": "node94-u128-remainder",
+      "label": "compiler-builtins unsigned128 remainder",
+      "component": "foundation",
+      "target": "node94",
+      "start": 90568688,
+      "end": 90568885,
+      "target_body_sha256": "12f5828bd833666b6023e761036da32c29aeb7d1e7eedbb93d734f730f391e26",
+      "source": {
+        "path": "research/work-items/RE-004-u128-remainder-94/native/official-unmangled-197.bin",
+        "encoding": "binary",
+        "offset": 0,
+        "body_sha256": "12f5828bd833666b6023e761036da32c29aeb7d1e7eedbb93d734f730f391e26"
+      },
+      "source_kind": "published-artifact",
+      "boundary_basis": "Selected complete actual FDE/CIE and full official FUNC section; complete68-row leaf",
+      "evidence": "research/work-items/RE-004-u128-remainder-94/native/record.json",
+      "relocations": null
     }
   ]
 }

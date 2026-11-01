@@ -507,18 +507,46 @@
         373
       ],
       "non_relocation_difference_offsets": []
+    },
+    {
+      "id": "node94-u128-remainder",
+      "label": "compiler-builtins unsigned128 remainder",
+      "component": "foundation",
+      "target": "node94",
+      "start": 90568688,
+      "end": 90568885,
+      "target_body_sha256": "12f5828bd833666b6023e761036da32c29aeb7d1e7eedbb93d734f730f391e26",
+      "source": {
+        "path": "research/work-items/RE-004-u128-remainder-94/native/official-unmangled-197.bin",
+        "encoding": "binary",
+        "offset": 0,
+        "body_sha256": "12f5828bd833666b6023e761036da32c29aeb7d1e7eedbb93d734f730f391e26"
+      },
+      "source_kind": "published-artifact",
+      "boundary_basis": "Selected complete actual FDE/CIE and full official FUNC section; complete68-row leaf",
+      "evidence": "research/work-items/RE-004-u128-remainder-94/native/record.json",
+      "relocations": null,
+      "bytes": 197,
+      "raw_equal_bytes": 197,
+      "relocation_bytes": 0,
+      "non_relocation_bytes": 197,
+      "equal_non_relocation_bytes": 197,
+      "raw_equal": true,
+      "relocation_qualified": true,
+      "raw_difference_offsets": [],
+      "non_relocation_difference_offsets": []
     }
   ],
   "components": {
     "foundation": {
-      "bytes": 4478,
-      "raw_equal_bytes": 4386,
+      "bytes": 4675,
+      "raw_equal_bytes": 4583,
       "relocation_bytes": 92,
-      "non_relocation_bytes": 4386,
-      "equal_non_relocation_bytes": 4386,
-      "windows": 8,
-      "raw_equal_windows": 3,
-      "relocation_qualified_windows": 8
+      "non_relocation_bytes": 4583,
+      "equal_non_relocation_bytes": 4583,
+      "windows": 9,
+      "raw_equal_windows": 4,
+      "relocation_qualified_windows": 9
     },
     "serialization": {
       "bytes": 0,
@@ -753,14 +781,14 @@
   },
   "totals": {
     "node94": {
-      "bytes": 4478,
-      "raw_equal_bytes": 4386,
+      "bytes": 4675,
+      "raw_equal_bytes": 4583,
       "relocation_bytes": 92,
-      "non_relocation_bytes": 4386,
-      "equal_non_relocation_bytes": 4386,
-      "windows": 8,
-      "raw_equal_windows": 3,
-      "relocation_qualified_windows": 8
+      "non_relocation_bytes": 4583,
+      "equal_non_relocation_bytes": 4583,
+      "windows": 9,
+      "raw_equal_windows": 4,
+      "relocation_qualified_windows": 9
     },
     "node115": {
       "bytes": 2808,
