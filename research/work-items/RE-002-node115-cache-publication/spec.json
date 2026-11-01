@@ -1,0 +1,44 @@
+{
+  "target_size": 105896032,
+  "target_sha256": "a6e2897cd051213d004802deca416e8eca62b7a8278fa39f249e98c3867b5301",
+  "owner": {
+    "start": 97181008,
+    "end": 97182682,
+    "sha256": "f4cc818ee02b994599bfc53910323d3edf8420d0b404c2e5060faab72524c349",
+    "instructions": 454
+  },
+  "publication_start": 97182619,
+  "return_site": 97182681,
+  "cache_address": 105906328,
+  "cache_region": {
+    "type": 8,
+    "flags": 3,
+    "address": 105905728,
+    "offset": 105893384,
+    "size": 2263780,
+    "name": ".bss"
+  },
+  "relocations": {
+    "105773664": [
+      8,
+      105906328
+    ],
+    "105773672": [
+      8,
+      97181008
+    ]
+  },
+  "call_bindings": {
+    "97181772": 97182688
+  },
+  "unmeasured_callee_bounds": [
+    97182688,
+    97182701
+  ],
+  "sentinel_sites": [
+    97181040,
+    97182289,
+    97182451
+  ],
+  "prior_spec_sha256": "d84ce3fb8f1d82bc498a34f4380d48201248c5006c5f6ef22d6cfd8152d2bcf4"
+}
