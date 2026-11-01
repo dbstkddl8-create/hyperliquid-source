@@ -67,6 +67,10 @@ Actual operand counterfacts change SHLD count1->2, SHR count62->61 and store off
 
 No complete feature detector, CPU/ISA baseline, cryptographic algorithm, whole-prefix semantics, opaque helper, original source/ABI, runtime comparison or concurrency/atomic-publication guarantee is established. Other prefix/helper writes and exceptional behavior remain outside this local relation. All scope and reconstruction gates stay false. Rust implementation/two-build identity and hosted CI remain unmeasured.
 
-Full make test, captured instruction evaluation and push/PR-triggered CI remain held by the operator's explicit choice. Results here qualify only the static producer, graph certificate and independent integer equations.
+Earlier execution-limited validation (historical): full make test, captured instruction evaluation and push/PR-triggered CI were held by the operator's choice. Results here qualify only the static producer, graph certificate and independent integer equations.
 
 Next: map a reader of the second/third words and close the detector's feature/OS-state conditions before assigning feature names or generalizing the publication protocol.
+
+## Current submission and shared prerequisite
+
+Publication uses main3324e50333042b391312515e542279ca21f63dc8 plus the common LLVM bootstrap repair PR1295. The prerequisite is not a second new claim in this research. The original analysis snapshot and held validation remain historical; offline Python instruction evaluation is now explicitly authorized. Prior head689dd63c3816be430a4d16dcbf5f5a7c6237f72f completed all875 flat test files in hosted run41298922896: this module passed and only two pre-existing setup classes failed due to missing llvm-objdump. Those unchanged classes then passed18 tests on real Ubuntu after adding LLVM (proof run41312564822). The old full run remains a failure; fresh current-head full CI is pending. All existing test/runner policies stay intact; no native captured executable or Unicorn is run.
