@@ -1,0 +1,19 @@
+{
+  "focused": {
+    "command": "python3 -m unittest tests.test_wire_qty_rust tests.test_wire_qty_normal_form -v",
+    "tests": 11,
+    "seconds": 42.396,
+    "status": "PASS"
+  },
+  "repository_safe_checks": {
+    "command": "make doctor verify catalogue-check reproduce",
+    "status": "PASS"
+  },
+  "full_suite": {
+    "status": "NOT_YET_RUN_ON_THIS_HEAD",
+    "must_not_infer_success": true
+  },
+  "rust_build": "build-result.json",
+  "native_capture_execution": false,
+  "component_gates_changed": false
+}

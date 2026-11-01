@@ -154,6 +154,8 @@ def build(binary, rustc, output, controls=False):
         for kind, raw in [('stdout', process.stdout), ('stderr', process.stderr)]:
             (output/(label+'.'+kind)).write_bytes(raw)
         calls.append({'label': label, 'exit': process.returncode,
+                      'argv': [str(a).replace(str(output), '$OUTPUT').replace(str(ROOT), '$REPO')
+                               .replace(str(rustc), '$RUSTC').replace(linker, '$LINKER') for a in args],
                       'stdout_sha256': digest(process.stdout),
                       'stderr_sha256': digest(process.stderr)})
         need(process.returncode != 0 if fail else process.returncode == 0,
@@ -217,6 +219,8 @@ def build(binary, rustc, output, controls=False):
     data = Path(binary).read_bytes()
     need(digest(data) == native.SHA, 'target changed during comparison')
     result = {'status': 'PASS', 'target_sha256': native.SHA, 'compiler': version,
+              'host_linker_version': subprocess.check_output([linker, '--version'], text=True),
+              'sdkroot': os.environ.get('SDKROOT'),
               'source_compiler_linker_sha256': before, 'case_count': expected['count'],
               'expected_sha256': expected['fixture_sha256'], 'profiles': profiles,
               'own_optimized_library_raw_reproducible': True, 'rust_mutants': mutants,
