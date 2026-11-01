@@ -12,7 +12,7 @@ workspace contract.
 
 ## Evidence-backed contract
 
-The public surface combines eight independently verified packets:
+The public surface combines nine independently verified packets:
 
 | Packet | Implemented behavior |
 | --- | --- |
@@ -24,6 +24,7 @@ The public surface combines eight independently verified packets:
 | `RE-004-spot-wire-scale-94` | Eight-decimal wire price/size conversion with exact divisibility, nonzero price, and zero-size behavior |
 | `RE-004-px-tick-ladder-94` | Five-significant-digit tick ladder, perp and spot caps, divisibility, floor, and always-advance next-tick rounding |
 | `RE-004-evm-amount-scale-94` | Four-limb U256 division/multiplication for exponents `-19..=19` and the strict internal amount cap |
+| `RE-004-decimal-scaled-u64-94` | Decimal parts to scaled u64: exact, strict 0.001 snap and half-even modes, 96-bit product reduction, sign/cap checks and opaque note request |
 
 Every saturating operation returns both its value and
 `ArithmeticStatus::{Exact, Overflow, Underflow}`. Operations that the target
@@ -61,6 +62,42 @@ EVM conversion accepts a U256 as four little-endian u64 limbs. A nonnegative
 exponent divides by `10^e` and discards the remainder. A negative exponent
 performs checked 256-bit multiplication by `10^abs(e)`. The result must fit in
 one limb and be strictly less than `922337203685477580`.
+
+### Decimal parts conversion
+
+`decimal_to_scaled_u64(negative, mantissa, scale, mode, exponent)` projects the
+established scalar outcome from `0x3750350..0x3750604`. Its admitted parts have
+a mantissa below `2^96` and scale `0..=28`. Other parts are refused by this
+research API; native malformed-Decimal error behavior is not assigned.
+`ScaledDecimalOutcome` contains an optional u64 and a `note_requested` boolean,
+without recovering the native input or result object's Rust layout.
+
+The exponent byte must be at most 19. Mode zero requires exact conversion;
+mode one snaps to the nearest even integer only at distance **strictly below
+0.001**; all other mode bytes round halfway cases to even. Remaining fractions,
+nonzero negative results and values above `2^63-2` are rejected. Rounded negative
+zero is admitted. Multiplication preserves the native 96-bit Decimal bound by
+dropping only exact zero digits when scale permits. The conceptual intermediate
+can exceed u128; the implementation reduces the power-of-ten factor first.
+
+Mode-one adjustment with a nonzero gap requests an opaque native note callback.
+This library returns that fact without performing its side effects. The value/
+note projection assumes normal return from that callback; its implementation,
+full function behavior, caller/type ownership and units remain unresolved.
+The EVM cap above and this Decimal cap belong to distinct established operations.
+
+The [Rust evidence packet](../../research/work-items/RE-004-decimal-scaled-rust-94/README.md)
+records a fresh authorized offline Python instruction replay before Rust,
+25,325 production comparisons per actual build profile and corruption controls:
+
+```sh
+python3 tools/decimal_scaled_rust.py --rustc /path/to/rust-1.94.1/bin/rustc \
+  --output /new/output/directory --controls
+```
+
+`--controls` uses the separately authorized offline Python captured-instruction
+evaluator on private byte arrays. No native captured node or visor is launched.
+The other executed programs are independently authored Rust compiler products.
 
 ## Validation
 
