@@ -27,7 +27,7 @@ from foundation_tree_deep_copy import Node, Pool, deep_copy, destroy
 
 PACKET_DIR = os.path.join(REPO_ROOT, "research", "work-items",
                           "RE-001-tree-deep-copy-94")
-BINARY = os.path.join(REPO_ROOT, "work", "hl-node-94.bin")
+BINARY = os.path.join(REPO_ROOT, "artifacts", "node", "94", "hl-node")
 
 
 def node(value, payload, tag=None):

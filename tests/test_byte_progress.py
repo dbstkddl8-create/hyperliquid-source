@@ -151,8 +151,8 @@ class ActualByteProgressTests(unittest.TestCase):
 
     def test_actual_captures_and_retained_compiled_sources(self):
         stats = self.coverage['totals']['node94']
-        self.assertEqual((stats['raw_equal_bytes'], stats['bytes']), (4386, 4478))
-        self.assertEqual((stats['raw_equal_windows'], stats['relocation_qualified_windows'], stats['windows']), (3, 8, 8))
+        self.assertEqual((stats['raw_equal_bytes'], stats['bytes']), (4583, 4675))
+        self.assertEqual((stats['raw_equal_windows'], stats['relocation_qualified_windows'], stats['windows']), (4, 9, 9))
         self.assertEqual(self.coverage['totals']['node115']['windows'], 3)
         self.assertEqual(self.coverage['targets']['node94']['text_bytes'], 70370352)
 
@@ -162,10 +162,19 @@ class ActualByteProgressTests(unittest.TestCase):
         output = render_readme_progress(self.components, progress, self.coverage)
         self.assertEqual(progress, before)
         self.assertIn('0.00% (0/24)', output)
-        self.assertIn('4,386/4,478 (97.95%)', output)
-        self.assertIn('0.00636%', output)
+        self.assertIn('4,583/4,675 (98.03%)', output)
+        self.assertIn('0.00664%', output)
         self.assertIn('| Node #94 | 0/4 | 0% | N/A | N/A | N/A |', output)
         self.assertIn('not 0% correct', output)
+
+    def test_remainder_published_artifact_counts_one_interval(self):
+        windows = [row for row in self.coverage['windows']
+                   if row['id'] == 'node94-u128-remainder']
+        self.assertEqual(len(windows), 1)
+        self.assertEqual(windows[0]['source_kind'], 'published-artifact')
+        self.assertEqual(windows[0]['bytes'], 197)
+        self.assertTrue(windows[0]['raw_equal'])
+        self.assertEqual(windows[0]['relocation_bytes'], 0)
 
 
 if __name__ == '__main__':
