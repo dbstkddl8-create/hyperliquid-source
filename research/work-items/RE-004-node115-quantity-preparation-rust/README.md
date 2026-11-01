@@ -135,3 +135,5 @@ counts are unmeasured. No whole-function equivalence, original compiler recovery
 formatter output or full assets/foundation gate is claimed. All four component
 gates remain false. The next question is the opaque formatter's own complete
 function and vtable/data closure, before proposing a string or wire codec.
+
+Pinned-toolchain follow-up: Rust 1.94.1 rustfmt and Clippy (library and test configuration, warnings denied) pass. The manual divisibility expression now uses the standard integer method with the same relation. Both build profiles and all three compiled mutants were rerun against the unchanged 2,540-row fixture; five runner tests pass in 4.847 seconds. `build-result-before-style.json` preserves the initial submitted build record; `build-result.json` records the current source. The zero-scale mutant selects the same field after formatting; the pre-Rust freeze remains unchanged.

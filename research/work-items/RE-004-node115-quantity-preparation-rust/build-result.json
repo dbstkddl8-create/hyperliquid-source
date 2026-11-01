@@ -5,9 +5,9 @@
   "host_linker_version": "Apple clang version 15.0.0 (clang-1500.3.9.4)\nTarget: arm64-apple-darwin25.4.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
   "sdkroot": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
   "source_compiler_linker_sha256": [
-    "ba7ccd4a1740ba7d84904b85a88de0e887ffd523dbedeaf41da0822978ed2ed0",
+    "c3dc7a6f3953d1f6fd5e4d18879b54b1f02c59e8f4a0baab874913240cba0fe3",
     "ae535395572d73ee701a31505d78a1a5ce560f4eda227507f0af58143df1a3c8",
-    "417a90443e1b5529f5cb6c367b9d6af9ab3efba43901649f6ce0776b632d10f1",
+    "2b8db7cb38d2a09a0c892b3ff1a9f74e2de0aba40cab8cd710e9ba6dc85b2b74",
     "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6",
     "693d5d0ba3e939d5bb32b62e253c443f8997c5bb118b9398844d0cbd47e890a4"
   ],
@@ -17,7 +17,7 @@
     {
       "name": "debug",
       "opt_level": 0,
-      "library_sha256": "f84727dae4525ee64455700e75c00bac798541c92baca925e256b0fc49a8a427",
+      "library_sha256": "36f20d1d5544e8de61709d26257f3191d5241b4511181be1f919e0e30fb65592",
       "actual_sha256": "ae535395572d73ee701a31505d78a1a5ce560f4eda227507f0af58143df1a3c8",
       "matches": true,
       "mismatches": 0,
@@ -26,7 +26,7 @@
     {
       "name": "optimized",
       "opt_level": 3,
-      "library_sha256": "0bfd59624ef4e24b3df94a4415f6a2370294e45f4c6754ad66bc0b21a17b0643",
+      "library_sha256": "034fa359d1e4fb758d9cc522f92cf988563a38f267eefb55a63e61dcb21ca470",
       "actual_sha256": "ae535395572d73ee701a31505d78a1a5ce560f4eda227507f0af58143df1a3c8",
       "matches": true,
       "mismatches": 0,
@@ -38,7 +38,7 @@
     {
       "name": "mutant-zero-scale",
       "opt_level": 0,
-      "library_sha256": "d0899230149b35dc31535bafd8222adf7e3ffe35aa90fecb52a4d6a1c7df12a1",
+      "library_sha256": "17d6bc7f7877b4108f737dab862e4cb14f93e86d41fe7e886ae9e398e9982470",
       "actual_sha256": "eaacce89db8c6fa81503df281bb840abdc1aecb6aa149e80c79a6ab013e5c7ce",
       "matches": false,
       "mismatches": 1,
@@ -47,7 +47,7 @@
     {
       "name": "mutant-seven-place-cap",
       "opt_level": 0,
-      "library_sha256": "ceca1c20baa2d43786db91158575d183cc97c68472c2210e8cc272c48ef9ba7f",
+      "library_sha256": "690eb3cfbbbbd02366156bd76fac5822cb2ad5c4a87968804d0cb8538a575bfe",
       "actual_sha256": "85d5c1064ba81dcffa39d369497769494f600bf7f38a3cdb2acd2ef3d8aa4115",
       "matches": false,
       "mismatches": 2539,
@@ -56,7 +56,7 @@
     {
       "name": "mutant-low-word-truncation",
       "opt_level": 0,
-      "library_sha256": "ea39e546b9e50fa6b52e5f4c67c4619ddece8371f955f394cc3512f5d0f3677a",
+      "library_sha256": "dddfb8cf47199cfe2dff97efb12f17614dc70b7262dc467822bbaa7efe87a26c",
       "actual_sha256": "d92dc525057a3bf792d5cc5fd2e724cbc61cc34e8ab76bc8a5c5a818c417eeae",
       "matches": false,
       "mismatches": 1339,
@@ -205,7 +205,7 @@
       "argv": [
         "$OUTPUT/debug/tests"
       ],
-      "stdout_sha256": "ab140f845dac78fed59a59ded615beca50428fbf0175f989571d68ab75112b90",
+      "stdout_sha256": "b8f3f89407d258369c6bb2de53d7b459e31bc1a3518a05b7659753a2b59ff431",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
@@ -504,7 +504,7 @@
       "argv": [
         "$OUTPUT/mutant-zero-scale/tests"
       ],
-      "stdout_sha256": "3bac46cd75ff2f23ad46fd2bab2b0616add1099a820a03049d72b1613342b155",
+      "stdout_sha256": "28e004e5e5c8f56f7052eb357033c9813bafdc708036b6438942ff6fe33fa194",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
@@ -616,7 +616,7 @@
       "argv": [
         "$OUTPUT/mutant-seven-place-cap/tests"
       ],
-      "stdout_sha256": "cc0860caf36f331c199c5ff22cb40d970f6b910849323d59395577d69d9655ea",
+      "stdout_sha256": "02c4c7f297c573aa2e5ba2ea13d97a03abcb4de7f1254f206dd07dff56669aca",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
@@ -728,7 +728,7 @@
       "argv": [
         "$OUTPUT/mutant-low-word-truncation/tests"
       ],
-      "stdout_sha256": "75786e14a7b5d890d224bdf9e68c3b4e71e9e1c1f4ad38cb8d313112f205aacc",
+      "stdout_sha256": "da4a92f5d864f60de6667c4883b3ba1cca3a96fc58c65a90b7cbca83198560bb",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   ],

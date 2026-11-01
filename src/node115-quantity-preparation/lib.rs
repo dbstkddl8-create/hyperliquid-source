@@ -38,11 +38,14 @@ pub fn prepare_quantity(input: u64) -> Result<PreparedQuantity, UnsupportedDomai
         return Err(UnsupportedDomain);
     }
     if input == 0 {
-        return Ok(PreparedQuantity { coefficient: 0, scale: 0 });
+        return Ok(PreparedQuantity {
+            coefficient: 0,
+            scale: 0,
+        });
     }
     let mut coefficient = input;
     let mut scale = 8;
-    while scale > 0 && coefficient % 10 == 0 {
+    while scale > 0 && coefficient.is_multiple_of(10) {
         coefficient /= 10;
         scale -= 1;
     }
@@ -64,11 +67,20 @@ mod tests {
             let fields: Vec<u64> = line.split('\t').map(|s| s.parse().unwrap()).collect();
             assert_eq!(fields.len(), 7);
             let prepared = prepare_quantity(fields[0]).unwrap();
-            assert_eq!((prepared.coefficient, prepared.scale as u64), (fields[1], fields[2]),
-                       "scalar {}", fields[0]);
+            assert_eq!(
+                (prepared.coefficient, prepared.scale as u64),
+                (fields[1], fields[2]),
+                "scalar {}",
+                fields[0]
+            );
             let words = prepared.prepared_words();
             for i in 0..4 {
-                assert_eq!(words[i] as u64, fields[i+3], "input {} word {i}", fields[0]);
+                assert_eq!(
+                    words[i] as u64,
+                    fields[i + 3],
+                    "input {} word {i}",
+                    fields[0]
+                );
             }
             count += 1;
         }
@@ -77,7 +89,7 @@ mod tests {
 
     #[test]
     fn own_api_refuses_words_outside_the_qualified_native_cut() {
-        for input in [1 << 63, (1 << 63)+1, u64::MAX] {
+        for input in [1 << 63, (1 << 63) + 1, u64::MAX] {
             assert_eq!(prepare_quantity(input), Err(UnsupportedDomain));
         }
     }

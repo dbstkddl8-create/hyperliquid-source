@@ -199,7 +199,7 @@ def build(binary, rustc, output, controls=False):
     if controls:
         source = SOURCE.read_text()
         for name, old, new in [
-            ('zero-scale', 'coefficient: 0, scale: 0', 'coefficient: 0, scale: 8'),
+            ('zero-scale', 'scale: 0,', 'scale: 8,'),
             ('seven-place-cap', 'let mut scale = 8;', 'let mut scale = 7;'),
             ('low-word-truncation', 'self.coefficient as u32', '(self.coefficient as u16) as u32')]:
             need(source.count(old) == 1, 'ambiguous Rust mutation site')
