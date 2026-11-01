@@ -162,7 +162,11 @@ def run(output: Path, rustc: Path, target: Path, controls: bool) -> dict:
         tests = directory / "independent-tests"
         command(f"opt{level}-tests-build", common + ["--test", "-C", "opt-level=" + str(level), str(COMPONENT / "independent_tests.rs"), *external, "-o", str(tests)])
         command(f"opt{level}-tests-run", [str(tests), "--nocapture"])
-        rebuild = directory / "rebuild.rlib"
+        # rustc includes the output basename in archive object-member names.
+        # Keep the basename fixed; vary only the owned output directory.
+        rebuild_directory = directory / "rebuild"
+        rebuild_directory.mkdir()
+        rebuild = rebuild_directory / library.name
         command(f"opt{level}-rebuild", compile_library[:-1] + [str(rebuild)])
         if library.read_bytes() != rebuild.read_bytes():
             raise ValueError("identical own-library recipe produced different raw bytes")
