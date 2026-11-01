@@ -1,0 +1,276 @@
+
+<authenticated-node115>:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000046aa760 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dcd0>:
+ 46aa760:	55                                              	push   rbp
+ 46aa761:	41 57                                           	push   r15
+ 46aa763:	41 56                                           	push   r14
+ 46aa765:	41 55                                           	push   r13
+ 46aa767:	41 54                                           	push   r12
+ 46aa769:	53                                              	push   rbx
+ 46aa76a:	48 83 ec 38                                     	sub    rsp,0x38
+ 46aa76e:	48 89 d3                                        	mov    rbx,rdx
+ 46aa771:	41 be 01 00 00 00                               	mov    r14d,0x1
+ 46aa777:	48 85 d2                                        	test   rdx,rdx
+ 46aa77a:	0f 84 d7 00 00 00                               	je     46aa857 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dbd9>
+ 46aa780:	48 83 fb 09                                     	cmp    rbx,0x9
+ 46aa784:	75 1e                                           	jne    46aa7a4 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc8c>
+ 46aa786:	48 b8 50 55 52 52 2f 55 53 44                   	movabs rax,0x4453552f52525550
+ 46aa790:	48 33 06                                        	xor    rax,QWORD PTR [rsi]
+ 46aa793:	0f b6 4e 08                                     	movzx  ecx,BYTE PTR [rsi+0x8]
+ 46aa797:	48 83 f1 43                                     	xor    rcx,0x43
+ 46aa79b:	48 09 c1                                        	or     rcx,rax
+ 46aa79e:	0f 84 c6 00 00 00                               	je     46aa86a <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dbc6>
+ 46aa7a4:	0f b6 2e                                        	movzx  ebp,BYTE PTR [rsi]
+ 46aa7a7:	83 fd 23                                        	cmp    ebp,0x23
+ 46aa7aa:	74 05                                           	je     46aa7b1 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc7f>
+ 46aa7ac:	83 fd 40                                        	cmp    ebp,0x40
+ 46aa7af:	75 6e                                           	jne    46aa81f <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc11>
+ 46aa7b1:	49 89 de                                        	mov    r14,rbx
+ 46aa7b4:	49 ff ce                                        	dec    r14
+ 46aa7b7:	74 21                                           	je     46aa7da <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc56>
+ 46aa7b9:	4c 8d 6e 01                                     	lea    r13,[rsi+0x1]
+ 46aa7bd:	48 83 fb 02                                     	cmp    rbx,0x2
+ 46aa7c1:	0f 85 c2 00 00 00                               	jne    46aa889 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dba7>
+ 46aa7c7:	41 0f b6 45 00                                  	movzx  eax,BYTE PTR [r13+0x0]
+ 46aa7cc:	83 f8 2b                                        	cmp    eax,0x2b
+ 46aa7cf:	74 09                                           	je     46aa7da <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc56>
+ 46aa7d1:	83 f8 2d                                        	cmp    eax,0x2d
+ 46aa7d4:	0f 85 b4 00 00 00                               	jne    46aa88e <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dba2>
+ 46aa7da:	49 89 f7                                        	mov    r15,rsi
+ 46aa7dd:	49 89 fc                                        	mov    r12,rdi
+ 46aa7e0:	48 89 df                                        	mov    rdi,rbx
+ 46aa7e3:	ff 15 97 4c e3 01                               	call   QWORD PTR [rip+0x1e34c97]        # 64df480 <__register_atfork@plt+0xed8f0>
+ 46aa7e9:	48 85 c0                                        	test   rax,rax
+ 46aa7ec:	0f 84 56 03 00 00                               	je     46aab48 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d8e8>
+ 46aa7f2:	49 89 c6                                        	mov    r14,rax
+ 46aa7f5:	48 89 c7                                        	mov    rdi,rax
+ 46aa7f8:	4c 89 fe                                        	mov    rsi,r15
+ 46aa7fb:	48 89 da                                        	mov    rdx,rbx
+ 46aa7fe:	ff 15 04 4d e3 01                               	call   QWORD PTR [rip+0x1e34d04]        # 64df508 <__register_atfork@plt+0xed978>
+ 46aa804:	4c 89 e7                                        	mov    rdi,r12
+ 46aa807:	66 41 c7 04 24 68 00                            	mov    WORD PTR [r12],0x68
+ 46aa80e:	49 89 5c 24 08                                  	mov    QWORD PTR [r12+0x8],rbx
+ 46aa813:	4d 89 74 24 10                                  	mov    QWORD PTR [r12+0x10],r14
+ 46aa818:	49 89 5c 24 18                                  	mov    QWORD PTR [r12+0x18],rbx
+ 46aa81d:	eb 58                                           	jmp    46aa877 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dbb9>
+ 46aa81f:	48 85 db                                        	test   rbx,rbx
+ 46aa822:	0f 88 a9 02 00 00                               	js     46aaad1 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d95f>
+ 46aa828:	74 2d                                           	je     46aa857 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dbd9>
+ 46aa82a:	49 89 f7                                        	mov    r15,rsi
+ 46aa82d:	49 89 fc                                        	mov    r12,rdi
+ 46aa830:	48 89 df                                        	mov    rdi,rbx
+ 46aa833:	ff 15 47 4c e3 01                               	call   QWORD PTR [rip+0x1e34c47]        # 64df480 <__register_atfork@plt+0xed8f0>
+ 46aa839:	48 85 c0                                        	test   rax,rax
+ 46aa83c:	0f 84 06 03 00 00                               	je     46aab48 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d8e8>
+ 46aa842:	49 89 c6                                        	mov    r14,rax
+ 46aa845:	48 89 c7                                        	mov    rdi,rax
+ 46aa848:	4c 89 fe                                        	mov    rsi,r15
+ 46aa84b:	48 89 da                                        	mov    rdx,rbx
+ 46aa84e:	ff 15 b4 4c e3 01                               	call   QWORD PTR [rip+0x1e34cb4]        # 64df508 <__register_atfork@plt+0xed978>
+ 46aa854:	4c 89 e7                                        	mov    rdi,r12
+ 46aa857:	66 c7 07 68 00                                  	mov    WORD PTR [rdi],0x68
+ 46aa85c:	48 89 5f 08                                     	mov    QWORD PTR [rdi+0x8],rbx
+ 46aa860:	4c 89 77 10                                     	mov    QWORD PTR [rdi+0x10],r14
+ 46aa864:	48 89 5f 18                                     	mov    QWORD PTR [rdi+0x18],rbx
+ 46aa868:	eb 0d                                           	jmp    46aa877 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dbb9>
+ 46aa86a:	48 c7 47 08 00 00 00 00                         	mov    QWORD PTR [rdi+0x8],0x0
+ 46aa872:	66 c7 07 a2 01                                  	mov    WORD PTR [rdi],0x1a2
+ 46aa877:	48 89 f8                                        	mov    rax,rdi
+ 46aa87a:	48 83 c4 38                                     	add    rsp,0x38
+ 46aa87e:	5b                                              	pop    rbx
+ 46aa87f:	41 5c                                           	pop    r12
+ 46aa881:	41 5d                                           	pop    r13
+ 46aa883:	41 5e                                           	pop    r14
+ 46aa885:	41 5f                                           	pop    r15
+ 46aa887:	5d                                              	pop    rbp
+ 46aa888:	c3                                              	ret
+ 46aa889:	41 0f b6 45 00                                  	movzx  eax,BYTE PTR [r13+0x0]
+ 46aa88e:	31 c9                                           	xor    ecx,ecx
+ 46aa890:	3c 2b                                           	cmp    al,0x2b
+ 46aa892:	0f 94 c1                                        	sete   cl
+ 46aa895:	4d 89 f0                                        	mov    r8,r14
+ 46aa898:	49 29 c8                                        	sub    r8,rcx
+ 46aa89b:	4c 01 e9                                        	add    rcx,r13
+ 46aa89e:	49 83 f8 11                                     	cmp    r8,0x11
+ 46aa8a2:	0f 83 12 01 00 00                               	jae    46aa9ba <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da76>
+ 46aa8a8:	4d 85 c0                                        	test   r8,r8
+ 46aa8ab:	0f 84 4b 01 00 00                               	je     46aa9fc <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da34>
+ 46aa8b1:	31 c0                                           	xor    eax,eax
+ 46aa8b3:	31 d2                                           	xor    edx,edx
+ 46aa8b5:	66 66 2e 0f 1f 84 00 00 00 00 00                	data16 cs nop WORD PTR [rax+rax*1+0x0]
+ 46aa8c0:	44 0f b6 0c 11                                  	movzx  r9d,BYTE PTR [rcx+rdx*1]
+ 46aa8c5:	41 83 c1 d0                                     	add    r9d,0xffffffd0
+ 46aa8c9:	41 83 f9 09                                     	cmp    r9d,0x9
+ 46aa8cd:	0f 87 f5 01 00 00                               	ja     46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aa8d3:	48 8d 04 80                                     	lea    rax,[rax+rax*4]
+ 46aa8d7:	45 89 c9                                        	mov    r9d,r9d
+ 46aa8da:	49 8d 04 41                                     	lea    rax,[r9+rax*2]
+ 46aa8de:	48 ff c2                                        	inc    rdx
+ 46aa8e1:	49 39 d0                                        	cmp    r8,rdx
+ 46aa8e4:	75 da                                           	jne    46aa8c0 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169db70>
+ 46aa8e6:	40 80 fd 40                                     	cmp    bpl,0x40
+ 46aa8ea:	75 09                                           	jne    46aa8f5 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169db3b>
+ 46aa8ec:	48 85 c0                                        	test   rax,rax
+ 46aa8ef:	0f 84 d3 01 00 00                               	je     46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aa8f5:	41 bf 14 00 00 00                               	mov    r15d,0x14
+ 46aa8fb:	48 89 c2                                        	mov    rdx,rax
+ 46aa8fe:	49 89 c0                                        	mov    r8,rax
+ 46aa901:	48 3d e8 03 00 00                               	cmp    rax,0x3e8
+ 46aa907:	72 69                                           	jb     46aa972 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dabe>
+ 46aa909:	49 b9 4b 59 86 38 d6 c5 6d 34                   	movabs r9,0x346dc5d63886594b
+ 46aa913:	4c 8d 15 f8 40 dc fb                            	lea    r10,[rip+0xfffffffffbdc40f8]        # 46ea12 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x58d9a1e>
+ 46aa91a:	4c 89 c1                                        	mov    rcx,r8
+ 46aa91d:	0f 1f 00                                        	nop    DWORD PTR [rax]
+ 46aa920:	48 89 c8                                        	mov    rax,rcx
+ 46aa923:	49 f7 e1                                        	mul    r9
+ 46aa926:	48 c1 ea 0b                                     	shr    rdx,0xb
+ 46aa92a:	69 c2 10 27 00 00                               	imul   eax,edx,0x2710
+ 46aa930:	41 89 cb                                        	mov    r11d,ecx
+ 46aa933:	41 29 c3                                        	sub    r11d,eax
+ 46aa936:	41 69 c3 7b 14 00 00                            	imul   eax,r11d,0x147b
+ 46aa93d:	c1 e8 13                                        	shr    eax,0x13
+ 46aa940:	44 6b e0 64                                     	imul   r12d,eax,0x64
+ 46aa944:	45 29 e3                                        	sub    r11d,r12d
+ 46aa947:	45 0f b7 db                                     	movzx  r11d,r11w
+ 46aa94b:	41 0f b7 04 42                                  	movzx  eax,WORD PTR [r10+rax*2]
+ 46aa950:	66 0f 6e c0                                     	movd   xmm0,eax
+ 46aa954:	66 43 0f c4 04 5a 01                            	pinsrw xmm0,WORD PTR [r10+r11*2],0x1
+ 46aa95b:	66 42 0f 7e 44 3c 20                            	movd   DWORD PTR [rsp+r15*1+0x20],xmm0
+ 46aa962:	49 83 c7 fc                                     	add    r15,0xfffffffffffffffc
+ 46aa966:	48 81 f9 7f 96 98 00                            	cmp    rcx,0x98967f
+ 46aa96d:	48 89 d1                                        	mov    rcx,rdx
+ 46aa970:	77 ae                                           	ja     46aa920 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169db10>
+ 46aa972:	48 83 fa 09                                     	cmp    rdx,0x9
+ 46aa976:	76 31                                           	jbe    46aa9a9 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da87>
+ 46aa978:	89 d0                                           	mov    eax,edx
+ 46aa97a:	c1 e8 02                                        	shr    eax,0x2
+ 46aa97d:	0f b7 c0                                        	movzx  eax,ax
+ 46aa980:	69 c0 7b 14 00 00                               	imul   eax,eax,0x147b
+ 46aa986:	c1 e8 11                                        	shr    eax,0x11
+ 46aa989:	6b c8 64                                        	imul   ecx,eax,0x64
+ 46aa98c:	29 ca                                           	sub    edx,ecx
+ 46aa98e:	0f b7 ca                                        	movzx  ecx,dx
+ 46aa991:	48 8d 15 7a 40 dc fb                            	lea    rdx,[rip+0xfffffffffbdc407a]        # 46ea12 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x58d9a1e>
+ 46aa998:	0f b7 0c 4a                                     	movzx  ecx,WORD PTR [rdx+rcx*2]
+ 46aa99c:	66 42 89 4c 3c 22                               	mov    WORD PTR [rsp+r15*1+0x22],cx
+ 46aa9a2:	49 83 c7 fe                                     	add    r15,0xfffffffffffffffe
+ 46aa9a6:	48 89 c2                                        	mov    rdx,rax
+ 46aa9a9:	4d 85 c0                                        	test   r8,r8
+ 46aa9ac:	4c 89 6c 24 10                                  	mov    QWORD PTR [rsp+0x10],r13
+ 46aa9b1:	74 63                                           	je     46aaa16 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da1a>
+ 46aa9b3:	48 85 d2                                        	test   rdx,rdx
+ 46aa9b6:	74 75                                           	je     46aaa2d <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da03>
+ 46aa9b8:	eb 5c                                           	jmp    46aaa16 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da1a>
+ 46aa9ba:	31 c0                                           	xor    eax,eax
+ 46aa9bc:	41 b9 0a 00 00 00                               	mov    r9d,0xa
+ 46aa9c2:	45 31 d2                                        	xor    r10d,r10d
+ 46aa9c5:	4d 39 d0                                        	cmp    r8,r10
+ 46aa9c8:	0f 84 18 ff ff ff                               	je     46aa8e6 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169db4a>
+ 46aa9ce:	49 f7 e1                                        	mul    r9
+ 46aa9d1:	0f 80 f1 00 00 00                               	jo     46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aa9d7:	46 0f b6 1c 11                                  	movzx  r11d,BYTE PTR [rcx+r10*1]
+ 46aa9dc:	41 83 c3 d0                                     	add    r11d,0xffffffd0
+ 46aa9e0:	4c 01 d8                                        	add    rax,r11
+ 46aa9e3:	0f 92 c2                                        	setb   dl
+ 46aa9e6:	41 83 fb 09                                     	cmp    r11d,0x9
+ 46aa9ea:	0f 87 d8 00 00 00                               	ja     46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aa9f0:	49 ff c2                                        	inc    r10
+ 46aa9f3:	84 d2                                           	test   dl,dl
+ 46aa9f5:	74 ce                                           	je     46aa9c5 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169da6b>
+ 46aa9f7:	e9 cc 00 00 00                                  	jmp    46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aa9fc:	40 80 fd 40                                     	cmp    bpl,0x40
+ 46aaa00:	0f 84 c2 00 00 00                               	je     46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aaa06:	4c 89 6c 24 10                                  	mov    QWORD PTR [rsp+0x10],r13
+ 46aaa0b:	41 bf 14 00 00 00                               	mov    r15d,0x14
+ 46aaa11:	31 d2                                           	xor    edx,edx
+ 46aaa13:	45 31 c0                                        	xor    r8d,r8d
+ 46aaa16:	83 e2 0f                                        	and    edx,0xf
+ 46aaa19:	48 8d 05 f2 3f dc fb                            	lea    rax,[rip+0xfffffffffbdc3ff2]        # 46ea12 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x58d9a1e>
+ 46aaa20:	0f b6 44 50 01                                  	movzx  eax,BYTE PTR [rax+rdx*2+0x1]
+ 46aaa25:	42 88 44 3c 23                                  	mov    BYTE PTR [rsp+r15*1+0x23],al
+ 46aaa2a:	49 ff cf                                        	dec    r15
+ 46aaa2d:	4d 8d 67 ec                                     	lea    r12,[r15-0x14]
+ 46aaa31:	49 f7 dc                                        	neg    r12
+ 46aaa34:	41 bd 01 00 00 00                               	mov    r13d,0x1
+ 46aaa3a:	49 83 ff 14                                     	cmp    r15,0x14
+ 46aaa3e:	48 89 7c 24 08                                  	mov    QWORD PTR [rsp+0x8],rdi
+ 46aaa43:	4c 89 44 24 18                                  	mov    QWORD PTR [rsp+0x18],r8
+ 46aaa48:	48 89 34 24                                     	mov    QWORD PTR [rsp],rsi
+ 46aaa4c:	74 32                                           	je     46aaa80 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d9b0>
+ 46aaa4e:	4c 89 e7                                        	mov    rdi,r12
+ 46aaa51:	ff 15 29 4a e3 01                               	call   QWORD PTR [rip+0x1e34a29]        # 64df480 <__register_atfork@plt+0xed8f0>
+ 46aaa57:	48 85 c0                                        	test   rax,rax
+ 46aaa5a:	0f 84 f6 00 00 00                               	je     46aab56 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d8da>
+ 46aaa60:	49 89 c5                                        	mov    r13,rax
+ 46aaa63:	4a 8d 34 3c                                     	lea    rsi,[rsp+r15*1]
+ 46aaa67:	48 83 c6 24                                     	add    rsi,0x24
+ 46aaa6b:	48 89 c7                                        	mov    rdi,rax
+ 46aaa6e:	4c 89 e2                                        	mov    rdx,r12
+ 46aaa71:	ff 15 91 4a e3 01                               	call   QWORD PTR [rip+0x1e34a91]        # 64df508 <__register_atfork@plt+0xed978>
+ 46aaa77:	48 8b 7c 24 08                                  	mov    rdi,QWORD PTR [rsp+0x8]
+ 46aaa7c:	48 8b 34 24                                     	mov    rsi,QWORD PTR [rsp]
+ 46aaa80:	4d 39 f4                                        	cmp    r12,r14
+ 46aaa83:	75 23                                           	jne    46aaaa8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d988>
+ 46aaa85:	4c 89 ef                                        	mov    rdi,r13
+ 46aaa88:	48 8b 74 24 10                                  	mov    rsi,QWORD PTR [rsp+0x10]
+ 46aaa8d:	4c 89 f2                                        	mov    rdx,r14
+ 46aaa90:	ff 15 62 4f e3 01                               	call   QWORD PTR [rip+0x1e34f62]        # 64df9f8 <__register_atfork@plt+0xede68>
+ 46aaa96:	48 8b 34 24                                     	mov    rsi,QWORD PTR [rsp]
+ 46aaa9a:	48 8b 7c 24 08                                  	mov    rdi,QWORD PTR [rsp+0x8]
+ 46aaa9f:	48 8b 4c 24 18                                  	mov    rcx,QWORD PTR [rsp+0x18]
+ 46aaaa4:	85 c0                                           	test   eax,eax
+ 46aaaa6:	74 34                                           	je     46aaadc <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d954>
+ 46aaaa8:	49 83 ff 14                                     	cmp    r15,0x14
+ 46aaaac:	74 1a                                           	je     46aaac8 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d968>
+ 46aaaae:	49 89 fe                                        	mov    r14,rdi
+ 46aaab1:	4c 89 ef                                        	mov    rdi,r13
+ 46aaab4:	49 89 f7                                        	mov    r15,rsi
+ 46aaab7:	4c 89 e6                                        	mov    rsi,r12
+ 46aaaba:	31 d2                                           	xor    edx,edx
+ 46aaabc:	ff 15 de 49 e3 01                               	call   QWORD PTR [rip+0x1e349de]        # 64df4a0 <__register_atfork@plt+0xed910>
+ 46aaac2:	4c 89 fe                                        	mov    rsi,r15
+ 46aaac5:	4c 89 f7                                        	mov    rdi,r14
+ 46aaac8:	48 85 db                                        	test   rbx,rbx
+ 46aaacb:	0f 89 93 00 00 00                               	jns    46aab64 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d8cc>
+ 46aaad1:	31 ff                                           	xor    edi,edi
+ 46aaad3:	48 89 de                                        	mov    rsi,rbx
+ 46aaad6:	ff 15 bc 49 e3 01                               	call   QWORD PTR [rip+0x1e349bc]        # 64df498 <__register_atfork@plt+0xed908>
+ 46aaadc:	49 83 ff 14                                     	cmp    r15,0x14
+ 46aaae0:	74 1c                                           	je     46aaafe <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d932>
+ 46aaae2:	4c 89 ef                                        	mov    rdi,r13
+ 46aaae5:	4c 89 f6                                        	mov    rsi,r14
+ 46aaae8:	31 d2                                           	xor    edx,edx
+ 46aaaea:	ff 15 b0 49 e3 01                               	call   QWORD PTR [rip+0x1e349b0]        # 64df4a0 <__register_atfork@plt+0xed910>
+ 46aaaf0:	48 8b 4c 24 18                                  	mov    rcx,QWORD PTR [rsp+0x18]
+ 46aaaf5:	48 8b 34 24                                     	mov    rsi,QWORD PTR [rsp]
+ 46aaaf9:	48 8b 7c 24 08                                  	mov    rdi,QWORD PTR [rsp+0x8]
+ 46aaafe:	40 80 fd 40                                     	cmp    bpl,0x40
+ 46aab02:	75 0f                                           	jne    46aab13 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d91d>
+ 46aab04:	48 81 f9 00 e1 f5 05                            	cmp    rcx,0x5f5e100
+ 46aab0b:	0f 83 c9 fc ff ff                               	jae    46aa7da <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc56>
+ 46aab11:	eb 2c                                           	jmp    46aab3f <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d8f1>
+ 46aab13:	48 89 c8                                        	mov    rax,rcx
+ 46aab16:	48 2d 00 1f 0a fa                               	sub    rax,0xfffffffffa0a1f00
+ 46aab1c:	72 12                                           	jb     46aab30 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169d900>
+ 46aab1e:	48 81 c1 00 e1 f5 05                            	add    rcx,0x5f5e100
+ 46aab25:	48 c7 c0 ff ff ff ff                            	mov    rax,0xffffffffffffffff
+ 46aab2c:	48 0f 43 c1                                     	cmovae rax,rcx
+ 46aab30:	48 89 c1                                        	mov    rcx,rax
+ 46aab33:	48 3d 00 e1 f5 05                               	cmp    rax,0x5f5e100
+ 46aab39:	0f 82 9b fc ff ff                               	jb     46aa7da <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc56>
+ 46aab3f:	48 89 4f 08                                     	mov    QWORD PTR [rdi+0x8],rcx
+ 46aab43:	e9 2a fd ff ff                                  	jmp    46aa872 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dbbe>
+ 46aab48:	bf 01 00 00 00                                  	mov    edi,0x1
+ 46aab4d:	48 89 de                                        	mov    rsi,rbx
+ 46aab50:	ff 15 42 49 e3 01                               	call   QWORD PTR [rip+0x1e34942]        # 64df498 <__register_atfork@plt+0xed908>
+ 46aab56:	bf 01 00 00 00                                  	mov    edi,0x1
+ 46aab5b:	4c 89 e6                                        	mov    rsi,r12
+ 46aab5e:	ff 15 34 49 e3 01                               	call   QWORD PTR [rip+0x1e34934]        # 64df498 <__register_atfork@plt+0xed908>
+ 46aab64:	0f 85 70 fc ff ff                               	jne    46aa7da <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc56>
+ 46aab6a:	49 89 fc                                        	mov    r12,rdi
+ 46aab6d:	41 be 01 00 00 00                               	mov    r14d,0x1
+ 46aab73:	e9 8c fc ff ff                                  	jmp    46aa804 <_ZNKSt5ctypeIcE8do_widenEc@@Base-0x169dc2c>
