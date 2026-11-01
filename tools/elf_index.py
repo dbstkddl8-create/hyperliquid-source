@@ -101,9 +101,14 @@ def unwind_index(data):
     return secs, entries
 
 
-def generate(binary, prefix):
+def generate(binary, prefix, *, expected_count=None, expected_artifact=None):
     data = binary.read_bytes()
+    if expected_artifact is not None and (len(data) != expected_artifact['size']
+            or hashlib.sha256(data).hexdigest() != expected_artifact['sha256']):
+        raise ValueError(f'Artifact size/SHA-256 mismatch: {binary}')
     secs, entries = unwind_index(data)
+    if expected_count is not None and len(entries) != expected_count:
+        raise ValueError('Parsed unwind count differs from retained inventory')
     prefix.parent.mkdir(parents=True, exist_ok=True)
     with prefix.with_suffix('.tsv').open('w', newline='') as handle:
         writer = csv.writer(handle, delimiter='\t', lineterminator='\n')
@@ -150,10 +155,11 @@ def main():
     rel, inventory, prefix = target_for(args.release)
     item = manifest_item(ROOT, rel)
     check(ROOT / rel, item)
-    summary = generate(ROOT / rel, args.output_dir / prefix)
     expected = load_inventory(ROOT / inventory)['fde_count_eh_frame_hdr']
-    if summary['unwind_entries'] != expected:
-        raise ValueError('Parsed unwind count differs from retained inventory')
+    if type(expected) is not int or expected < 0:
+        raise ValueError('Invalid retained unwind count')
+    summary = generate(ROOT / rel, args.output_dir / prefix,
+                       expected_count=expected, expected_artifact=item)
     print(json.dumps(summary, indent=2))
     return 0
 
