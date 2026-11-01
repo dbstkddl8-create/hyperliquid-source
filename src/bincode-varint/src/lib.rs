@@ -57,7 +57,11 @@ pub fn read_u64(input: &mut &[u8], order: PayloadOrder) -> Result<u64, ReaderErr
     read_integer(input, order, 3)
 }
 
-fn read_integer(input: &mut &[u8], order: PayloadOrder, expected_code: u8) -> Result<u64, ReaderError> {
+fn read_integer(
+    input: &mut &[u8],
+    order: PayloadOrder,
+    expected_code: u8,
+) -> Result<u64, ReaderError> {
     let Some((&tag, rest)) = input.split_first() else {
         return Err(ReaderError::UnexpectedEnd { needed: 1 });
     };
@@ -73,16 +77,26 @@ fn read_integer(input: &mut &[u8], order: PayloadOrder, expected_code: u8) -> Re
                 U128_MARKER => 4,
                 _ => 12,
             };
-            return Err(ReaderError::InvalidIntegerType { expected_code, found_code });
+            return Err(ReaderError::InvalidIntegerType {
+                expected_code,
+                found_code,
+            });
         }
     };
     if input.len() < width {
-        return Err(ReaderError::UnexpectedEnd { needed: width - input.len() });
+        return Err(ReaderError::UnexpectedEnd {
+            needed: width - input.len(),
+        });
     }
     let payload = &input[..width];
     let value = match order {
-        PayloadOrder::Little => payload.iter().rev().fold(0, |n, &byte| (n << 8) | u64::from(byte)),
-        PayloadOrder::Big => payload.iter().fold(0, |n, &byte| (n << 8) | u64::from(byte)),
+        PayloadOrder::Little => payload
+            .iter()
+            .rev()
+            .fold(0, |n, &byte| (n << 8) | u64::from(byte)),
+        PayloadOrder::Big => payload
+            .iter()
+            .fold(0, |n, &byte| (n << 8) | u64::from(byte)),
     };
     *input = &input[width..];
     Ok(value)

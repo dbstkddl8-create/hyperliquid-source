@@ -149,3 +149,5 @@ Caller/type ownership, full wrapper selection, complete serialization and whole
 node behavior remain unresolved. No full component gate is requested. Next work
 should qualify an actual caller's wrapper dispatch and error ownership before
 using these primitives as a complete deserialization path.
+
+Pinned Cargo follow-up: Rust 1.94.1 offline locked debug/release builds, all twelve old plus two new integration tests, clippy all-targets with warnings denied, and rustfmt check pass. Both direct comparison profiles and all three compiled mutants pass again against the unchanged 3,276 cases; five runner tests pass in 0.425 seconds. The endian mutant now selects the same iterator after pinned formatting. `build-result-before-style.json` preserves the initial submitted report; `build-result.json` describes the current source. Historical expectation freeze and accepted evidence are unchanged.
