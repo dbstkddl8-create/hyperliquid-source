@@ -1,0 +1,12 @@
+{
+  "phase": "Expectations frozen before independently authored Rust source exists",
+  "source_exists": false,
+  "target_sha256": "a6e2897cd051213d004802deca416e8eca62b7a8278fa39f249e98c3867b5301",
+  "body_sha256": "697cfe8a1ab3360ab1777aff851cd9f4f65ba39e47eb842845d075831ac84483",
+  "static_evidence": "research/work-items/RE-001-node115-wire-qty-normal-form",
+  "cases": 2540,
+  "fixture_sha256": "ae535395572d73ee701a31505d78a1a5ce560f4eda227507f0af58143df1a3c8",
+  "input_sha256": "fa0618b97908364cc700848f95fd00ca328518f77bc809af0b350969ecd9843b",
+  "oracle_tool_sha256": "1b4e5cf6ef82d14e7f529c991f475c66e4f22965d864cb884f3ef38fdd3d148f",
+  "expectations": "Authenticated split-limb recurrence cross-checked against decimal-string trailing-zero specification; no captured execution or Rust outputs."
+}
