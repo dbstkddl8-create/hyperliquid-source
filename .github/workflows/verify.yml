@@ -10,7 +10,7 @@ jobs:
         with:
           lfs: true
           submodules: recursive
-      - run: sudo apt-get update && sudo apt-get install -y ripgrep gnupg git-lfs
+      - run: sudo apt-get update && sudo apt-get install -y ripgrep gnupg git-lfs llvm
       - run: git -C references/can1357-hl lfs pull
       - uses: actions/setup-node@v4
         with:
