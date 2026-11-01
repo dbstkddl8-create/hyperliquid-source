@@ -82,6 +82,15 @@ sources, complete transcripts and every mutant mismatch ID. It also invokes
 both actual compiled input-only clients afresh: both exit zero and reproduce
 all 1,066 complete observations from raw inputs alone.
 
+The four cleared static targets (`doctor`, `verify`, `catalogue-check`,
+`reproduce`) also pass at clean documentation/evidence commit
+`fcbabe7c5cb9ed27adddba18c19f200819ecc408`, in 39.189 seconds of combined
+target time. `validation/` retains all raw streams, exact commands and
+compressed full before/after audits: all 9,275 physical tracked source/input
+files, seven actual pinned repositories, HEAD/tree and clean status are
+unchanged. Later receipt packaging does not modify the measured executable
+sources, frozen corpus, pinned imports or target inputs.
+
 ```sh
 python3 -B tools/format_request_protocol.py \
   --rustc /path/to/authenticated/1.94.1/bin/rustc \
