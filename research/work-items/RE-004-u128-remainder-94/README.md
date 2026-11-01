@@ -97,8 +97,7 @@ python3 -B tools/u128_remainder_rust.py \
 
 The actual experiment on source commit `7184a190e9f3107e40946ff4d93389ccc62d606b`
 passed all 37 recorded commands. O0 and O3 independently linked production
-clients each matched all 53,366/53,366 frozen expectations. Both ordinary Rust
-unit tests passed on the separate 13-case frozen fixture. The three compiled,
+clients each matched all 53,366/53,366 frozen expectations. One ordinary Rust unit method passed in each profile on the separate 13-case frozen fixture (two test executions). The three compiled,
 normal-returning semantic controls disagreed on 5,341 / 10,847 / 27,945 results
 and produced genuine ordinary-unit assertion failures (exit 101).
 
@@ -126,7 +125,7 @@ normalized. `observed/SUMMARY.json` records selected measurements and the exact
 experiment working-tree condition. Executable hashes and exact recipes are
 retained; the local executables remain transient. Native collection and eight
 focused actual-input/corruption controls passed before new compiler execution.
-Final repository static-check receipts are added after those commands run.
+On clean later candidate `63d06316ba66f5e0950a2214dc2a9557022629b1`, `make doctor verify catalogue-check reproduce` and all eight focused native controls passed. All 9,500 physical inputs, seven actual clean pins, 103 provider payloads, HEAD/tree/status and actual analysis/linker tools stayed unchanged. `observed/final-static.zip` preserves the complete before/after maps, exact wrapper/commands and ten raw streams; `FINAL-STATIC.json` records timings and scope. A later evidence-only child retains these receipts without changing executable source or the registered comparison.
 
 The three compressed mathematical authority/transcript files followed the
 existing repository LFS rule. Each was freshly downloaded from the fork into
