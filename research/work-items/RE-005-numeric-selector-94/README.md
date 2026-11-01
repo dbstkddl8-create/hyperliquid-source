@@ -157,6 +157,43 @@ python3 -B research/work-items/RE-005-numeric-selector-94/retain_raw_streams.py 
 native receipt. That shared receipt also has reader-context records; those are
 excluded from this selector's235-byte/63-row primary scope and denominator.
 The new component does not close a combined679-byte formatter or opaque sink.
+The original peer script is retained byte-for-byte, including its original
+absolute paths. Replaying it requires a separate owned output directory and
+the authenticated target path; preserve the original receipt and raw listings.
+
+The independent actual-source/build/math/protocol review passed, receipt
+`SELECTOR-ACTUAL-REVIEW.json` SHA256
+`c9ba65011dbf969ca2d29ef832a655367114dca3bc5485a9230ca7b5207bb121`.
+It independently rechecked every original stream, all actual binaries' hashes,
+every semantic mutant and the lossless public pack. The peer also replayed both
+existing clients on51 privately retained rows comprising48 distinct complete
+inputs and12 values absent from the public corpus. Four normal runs matched
+independent math; changing wrong neighboring answer files left outputs unchanged.
+Only `SELECTOR-PRIVATE-PUBLIC-SUMMARY.json` is public. Private inputs, expected
+answers and detailed private runtime receipt are not included or counted as
+public reproducible corpus coverage. No new peer compiler build was needed.
+
+Own branch checks on clean evidence commit
+`e6bac38a8b9a057ee216dbfadcfed310ee7a4eb6`, tree
+`1ddeef8d14ca4df13f0d3ad1663d8a73c1472a9b`, all passed:
+
+```sh
+make -j1 'PYTHON=python3 -B' doctor
+make -j1 'PYTHON=python3 -B' verify
+make -j1 'PYTHON=python3 -B' catalogue-check
+make -j1 'PYTHON=python3 -B' reproduce
+```
+
+The four observed exits were0. Their9489 actual tracked/owned physical input
+records, all seven pins, all103 provider payloads, resolved GCC/ld, source
+head/tree and clean status matched before/after. `STATIC-RESULT.json` and
+`STATIC-RAW-STREAMS.json` retain exact commands and raw stdout/stderr; the two
+identical original audit streams are represented by
+`STATIC-PHYSICAL-INPUT-AUDIT.json`. `STATIC-COMMAND.py` retains the exact Python
+stdin wrapper used for that observed run, with explanatory comments added;
+it is not a second execution. Later publication edits only add these
+evidence receipts and this documentation; implementation/runner hashes remain
+those actually compiled and reviewed. No full-suite success is implied.
 
 Full current `make test` is **NOT RUN**: its expanded captured-instruction
 evaluator families remain outside the user's authorization. Static repository
